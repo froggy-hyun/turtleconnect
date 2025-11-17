@@ -1,0 +1,323 @@
+// src/pages/TurtleConnectMain.jsx
+import { useState } from "react";
+import logoTurtle from "../assets/logo-turtle.png";
+
+const HERO_BG =
+  "https://www.figma.com/api/mcp/asset/b0c80aad-ab8b-4602-a194-819251968bfe"; // 메인 상단 배경 이미지
+const LOGO_ICON =
+  "https://www.figma.com/api/mcp/asset/edcfbfb3-04ca-4c87-b908-13d0c44c2dda"; // 거북섬 아이콘
+
+const PICKUP_OPTIONS = ["강남역", "서울역", "정왕역", "시흥시청"];
+
+export default function TurtleConnectMain() {
+  return (
+    <div className="tc-root">
+      <Header />
+      <main className="tc-main">
+        <Hero />
+        <BookingSection />
+      </main>
+    </div>
+  );
+}
+
+function Header() {
+  return (
+    <header className="tc-header">
+      <div className="tc-header__left">
+        <img src={logoTurtle} alt="터틀커넥트 로고" className="tc-header__logo-icon" />
+        <div className="tc-header__logo-text">
+          <div className="tc-header__logo-title">거북섬 커넥트</div>
+          <div className="tc-header__logo-sub">Turtle Connect</div>
+        </div>
+      </div>
+
+      <nav className="tc-header__nav">
+        <button className="tc-header__nav-item tc-header__nav-item--active">홈</button>
+        <button className="tc-header__nav-item">축제 &amp; 관광지</button>
+      </nav>
+
+      <div className="tc-header__right">
+        <button className="tc-btn tc-btn--outline">로그인</button>
+        <button className="tc-btn tc-btn--primary">회원가입</button>
+      </div>
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="tc-hero">
+      <div className="tc-hero__bg">
+        <img src={HERO_BG} alt="거북섬 배경" />
+      </div>
+      <div className="tc-hero__content">
+        <p className="tc-hero__subtitle">
+          복잡한 이동 계획은 이제 그만. 클릭 몇 번이면 충분합니다.
+        </p>
+        <h1 className="tc-hero__title-small">쉽고 편리한 거북섬 단체 이동</h1>
+        <h2 className="tc-hero__title">터틀커넥트와 함께</h2>
+      </div>
+    </section>
+  );
+}
+
+function BookingSection() {
+  const [pickup, setPickup] = useState("강남역");
+  const [isPickupOpen, setPickupOpen] = useState(false);
+  const [people, setPeople] = useState(1);
+
+  // 여러 날짜 선택용: "YYYY-MM-DD" 문자열 배열
+  const [selectedDates, setSelectedDates] = useState([]);
+
+  const increase = () => setPeople((p) => Math.min(99, p + 1));
+  const decrease = () => setPeople((p) => Math.max(1, p - 1));
+
+  const handleSelectPickup = (value) => {
+    setPickup(value);
+    setPickupOpen(false);
+  };
+
+  const handleReset = () => {
+    setPickup("강남역");
+    setPeople(1);
+    setSelectedDates([]); // 날짜 선택 초기화
+  };
+
+  return (
+    <section className="tc-booking">
+      <div className="tc-booking__card">
+        {/* 왼쪽 - 나의 여행 계획 / 설명 */}
+        <div className="tc-booking__column tc-booking__column--left">
+          <h3 className="tc-section-title">나의 여행 계획</h3>
+          <p className="tc-section-caption">
+            여정 정보를 선택하고 다음 단계로 이동하세요.
+          </p>
+
+          <div className="tc-booking__participants">
+            <div className="tc-booking__participants-name">
+              박대시, 김니키 외 16명
+            </div>
+          </div>
+
+          <ul className="tc-booking__benefits">
+            <li>✔ 간편한 단체 이동 예약</li>
+            <li>✔ 인원·날짜·탑승지만 선택하면 끝</li>
+            <li>✔ 합리적인 가격 제안서 비교</li>
+            <li>✔ 투명한 시간표 &amp; 출발 스케줄 제공</li>
+          </ul>
+
+          <p className="tc-booking__hint">
+            선택이 완료되면, <br />
+            여행사가 제안한 견적서를 확인할 수 있어요.
+          </p>
+        </div>
+
+        {/* 가운데 - 날짜 선택 */}
+        <div className="tc-booking__column tc-booking__column--center">
+          <h3 className="tc-section-title">날짜를 선택해주세요.</h3>
+          <p className="tc-section-caption">
+            원하는 날짜를 여러 개 선택할 수 있어요.
+          </p>
+
+          <Calendar
+            selectedDates={selectedDates}      // ["2025-11-07", ...]
+            onChange={setSelectedDates}        // 배열 전체를 갱신
+          />
+
+          <p className="tc-calendar-selected">
+            {selectedDates.length === 0
+              ? "선택한 날짜가 없습니다."
+              : `선택한 날짜: ${selectedDates.join(", ")}`}
+          </p>
+        </div>
+
+        {/* 오른쪽 - 탑승지 & 인원 선택 */}
+        <div className="tc-booking__column tc-booking__column--right">
+          <h3 className="tc-section-title">탑승지 선택</h3>
+
+          <div className="tc-input-group">
+            <label className="tc-input-label">탑승지</label>
+            <div
+              className="tc-select"
+              onClick={() => setPickupOpen((open) => !open)}
+            >
+              <span>{pickup}</span>
+              <span className="tc-select__arrow">▼</span>
+            </div>
+            {isPickupOpen && (
+              <div className="tc-select__dropdown">
+                {PICKUP_OPTIONS.map((option) => (
+                  <button
+                    key={option}
+                    className="tc-select__option"
+                    onClick={() => handleSelectPickup(option)}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="tc-input-group">
+            <label className="tc-input-label">인원 선택</label>
+            <div className="tc-number-input">
+              <button
+                type="button"
+                className="tc-number-input__btn"
+                onClick={decrease}
+              >
+                −
+              </button>
+              <div className="tc-number-input__value">{people}</div>
+              <button
+                type="button"
+                className="tc-number-input__btn"
+                onClick={increase}
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <button className="tc-btn tc-btn--primary tc-booking__submit">
+            선택하기
+          </button>
+
+          <button
+            type="button"
+            className="tc-booking__reset"
+            onClick={handleReset}
+          >
+            선택 초기화
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Calendar({ selectedDates, onChange }) {
+  // 초기 뷰: 2025년 11월 (Figma 디자인 기준)
+  const initial = new Date(2025, 10, 1); // month = 10 → 11월
+  const [viewYear, setViewYear] = useState(initial.getFullYear());
+  const [viewMonth, setViewMonth] = useState(initial.getMonth()); // 0~11
+
+  const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
+
+  // 날짜 키를 "YYYY-MM-DD" 형태로 만들기
+  const makeKey = (y, m, d) =>
+    `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+
+  // 해당 월 정보
+  const firstDay = new Date(viewYear, viewMonth, 1).getDay(); // 0(일)~6(토)
+  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate(); // 말일
+
+  const prevMonth = () => {
+    let year = viewYear;
+    let month = viewMonth - 1;
+    if (month < 0) {
+      month = 11;
+      year -= 1;
+    }
+    setViewYear(year);
+    setViewMonth(month);
+  };
+
+  const nextMonth = () => {
+    let year = viewYear;
+    let month = viewMonth + 1;
+    if (month > 11) {
+      month = 0;
+      year += 1;
+    }
+    setViewYear(year);
+    setViewMonth(month);
+  };
+
+  const handleSelectDay = (day) => {
+    const key = makeKey(viewYear, viewMonth, day);
+    const exists = selectedDates.includes(key);
+
+    const next = exists
+      ? selectedDates.filter((d) => d !== key) // 다시 클릭 → 해제
+      : [...selectedDates, key];              // 처음 클릭 → 추가
+
+    onChange(next);
+  };
+
+  // 6주(6줄) 고정 그리드
+  const weeks = [];
+  let currentDay = 1 - firstDay;
+
+  for (let week = 0; week < 6; week++) {
+    const days = [];
+    for (let i = 0; i < 7; i++) {
+      if (currentDay < 1 || currentDay > daysInMonth) {
+        days.push(null);
+      } else {
+        days.push(currentDay);
+      }
+      currentDay++;
+    }
+    weeks.push(days);
+  }
+
+  return (
+    <div className="tc-calendar">
+      <div className="tc-calendar__header">
+        <button
+          type="button"
+          className="tc-calendar__nav-btn"
+          onClick={prevMonth}
+        >
+          ◀
+        </button>
+        <span className="tc-calendar__month">
+          {viewYear}년 {viewMonth + 1}월
+        </span>
+        <button
+          type="button"
+          className="tc-calendar__nav-btn"
+          onClick={nextMonth}
+        >
+          ▶
+        </button>
+      </div>
+
+      <div className="tc-calendar__grid">
+        {daysOfWeek.map((d) => (
+          <div key={d} className="tc-calendar__dow">
+            {d}
+          </div>
+        ))}
+
+        {weeks.map((week, wi) =>
+          week.map((day, di) => {
+            if (!day) {
+              return <div key={`${wi}-${di}`} className="tc-calendar__cell" />;
+            }
+
+            const key = makeKey(viewYear, viewMonth, day);
+            const isSelected = selectedDates.includes(key);
+
+            return (
+              <button
+                key={`${wi}-${di}`}
+                type="button"
+                className={
+                  "tc-calendar__cell" +
+                  (isSelected ? " tc-calendar__cell--selected" : "")
+                }
+                onClick={() => handleSelectDay(day)}
+              >
+                {day}
+              </button>
+            );
+          })
+        )}
+      </div>
+    </div>
+  );
+}
