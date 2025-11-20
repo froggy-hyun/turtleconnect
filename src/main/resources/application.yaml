@@ -1,3 +1,24 @@
 spring:
-  application:
-    name: turtleconnect
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
+  config:
+    import:
+      - optional:application-${SPRING_PROFILES_ACTIVE}.yaml
+      - optional:file:.env[.properties]
+
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-expiration: 600000
+  refresh-token-expiration: 1209600000
+
+server:
+  port: ${SERVER_PORT:8080}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    display-request-duration: true
+  api-docs:
+    path: /v3/api-docs
+
