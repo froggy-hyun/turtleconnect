@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 
 /**
  * 공통 예외 코드 Enum.
- * 모든 도메인의 예외는 이 ErrorCode를 사용한다.
+ * 모든 도메인의 예외는 이 ErrorCode를 사용
  */
 public enum ErrorCode {
 
@@ -17,7 +17,10 @@ public enum ErrorCode {
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "사용자를 찾을 수 없습니다."),
     USER_ALREADY_EXISTS(HttpStatus.CONFLICT, "이미 존재하는 이메일입니다."),
     REFRESH_TOKEN_NOT_FOUND(HttpStatus.NOT_FOUND, "리프레시 토큰이 존재하지 않습니다."),
-
+    LOCATION_NOT_FOUND(HttpStatus.NOT_FOUND, "위치를 찾을 수 없습니다."),
+    TOUR_REQUEST_NOT_FOUND(HttpStatus.NOT_FOUND, "투어 예약 정보를 찾을 수 없습니다."),
+    ACCESS_DENIED(HttpStatus.FORBIDDEN, "접근 권한이 없습니다."),
+    INVALID_DATE_RANGE(HttpStatus.BAD_REQUEST, "시작일은 종료일보다 이후일 수 없습니다."),
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 내부 오류가 발생했습니다.");
 
     private final HttpStatus status;

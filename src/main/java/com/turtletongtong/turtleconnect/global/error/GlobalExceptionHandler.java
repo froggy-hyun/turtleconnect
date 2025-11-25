@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * 전역 예외 처리 핸들러.
- * ApiException, JWT 예외, 예상치 못한 예외를 구분하여 처리한다.
+ * ApiException, JWT 예외, 예상치 못한 예외를 구분하여 처리
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
