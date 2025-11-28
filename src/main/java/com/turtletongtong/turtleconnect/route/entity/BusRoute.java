@@ -20,8 +20,6 @@ public class BusRoute {
     @Column(name = "agency_id", nullable = false)
     private Long agencyId;
 
-    @Column(name = "route_name", nullable = false, length = 100)
-    private String routeName;
 
     @Column(columnDefinition = "text")
     private String description;

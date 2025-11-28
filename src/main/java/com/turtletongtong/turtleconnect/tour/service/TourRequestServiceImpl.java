@@ -95,7 +95,6 @@ public class TourRequestServiceImpl implements TourRequestService {
     private MyTourRequestResponse toMyResponse(TourRequest tr) {
         // 기본값: WAITING 상태
         String locationName = tr.getLocation().getName();
-        String routeName = null;
         Integer pricePerPerson = null;
         Integer totalPrice = null;
         java.time.LocalDateTime pickupTime = null;
@@ -104,7 +103,6 @@ public class TourRequestServiceImpl implements TourRequestService {
         RouteMatch match = routeMatchRepository.findByTourRequestId(tr.getId()).orElse(null);
         if (match != null) {
             BusRoute busRoute = match.getBusRoute();
-            routeName = busRoute.getRouteName();
             pricePerPerson = busRoute.getPricePerPerson();
             totalPrice = pricePerPerson * tr.getParticipantCount();
 
@@ -120,7 +118,6 @@ public class TourRequestServiceImpl implements TourRequestService {
         return new MyTourRequestResponse(
                 tr.getId(),
                 locationName,
-                routeName,
                 tr.getStartDate(),
                 tr.getEndDate(),
                 pickupTime,

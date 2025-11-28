@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 public record MyTourRequestResponse(
         Long id,
         String locationName,
-        String routeName,          // 매칭된 노선 이름 (WAITING이면 null)
         LocalDate startDate,
         LocalDate endDate,
         LocalDateTime pickupTime,  // 탑승 시간 (WAITING이면 null)
