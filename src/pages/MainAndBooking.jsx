@@ -2,12 +2,8 @@
 import { useState } from "react";
 import "../styles/main-and-booking.css";
 import Header from "../components/Header";
+import banner from "../assets/banner.png"
 import userImg from "../assets/Ellipse.png";
-
-const HERO_BG =
-  "https://www.figma.com/api/mcp/asset/b0c80aad-ab8b-4602-a194-819251968bfe"; // 메인 상단 배경 이미지
-const LOGO_ICON =
-  "https://www.figma.com/api/mcp/asset/edcfbfb3-04ca-4c87-b908-13d0c44c2dda"; // 거북섬 아이콘
 
 const PICKUP_OPTIONS = ["강남역", "서울역", "정왕역", "시흥시청"];
 
@@ -27,7 +23,7 @@ function Hero() {
   return (
     <section className="tc-hero">
       <div className="tc-hero__bg">
-        <img src={HERO_BG} alt="거북섬 배경" />
+        <img src={banner} alt="거북섬 배경" />
       </div>
       <div className="tc-hero__content">
         <p className="tc-hero__subtitle">
