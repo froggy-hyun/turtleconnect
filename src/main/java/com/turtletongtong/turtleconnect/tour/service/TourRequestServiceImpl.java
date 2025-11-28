@@ -10,8 +10,7 @@ import com.turtletongtong.turtleconnect.route.entity.RouteMatch;
 import com.turtletongtong.turtleconnect.route.repository.BusStopRepository;
 import com.turtletongtong.turtleconnect.route.repository.RouteMatchRepository;
 import com.turtletongtong.turtleconnect.tour.dto.request.CreateTourRequest;
-import com.turtletongtong.turtleconnect.tour.dto.response.MyTourRequestResponse;
-import com.turtletongtong.turtleconnect.tour.dto.response.TourRequestResponse;
+import com.turtletongtong.turtleconnect.tour.dto.response.*;
 import com.turtletongtong.turtleconnect.tour.entity.TourRequest;
 import com.turtletongtong.turtleconnect.tour.entity.TourRequestStatus;
 import com.turtletongtong.turtleconnect.tour.repository.TourRequestRepository;
@@ -21,6 +20,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 
 @Service
@@ -128,6 +129,37 @@ public class TourRequestServiceImpl implements TourRequestService {
                 totalPrice,
                 tr.getStatus(),
                 tr.getCreatedAt()
+        );
+    }
+    @Override
+    @Transactional(readOnly = true)
+    public List<TourRequestDateCountResponse> getDateCounts(int year, int month) {
+        YearMonth ym = YearMonth.of(year, month);
+        LocalDate start = ym.atDay(1);
+        LocalDate end = ym.plusMonths(1).atDay(1);
+
+        return tourRequestRepository.findDateCountsBetween(
+                start,
+                end,
+                TourRequestStatus.CANCELED
+        );
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public TourRequestSummaryResponse getSummary(LocalDate date) {
+        return tourRequestRepository.findSummaryByDate(
+                date,
+                TourRequestStatus.CANCELED
+        );
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<TourRequestLocationSummaryResponse> getLocationSummary(LocalDate date) {
+        return tourRequestRepository.findLocationSummaryByDate(
+                date,
+                TourRequestStatus.CANCELED
         );
     }
 }
