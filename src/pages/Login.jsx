@@ -55,7 +55,7 @@ function LoginPage() {
               </label>
 
               <div className="login-links">
-                <button type="button" className="login-link">
+                <button type="button" className="login-link" onClick={() => navigate("/signup")}>
                   회원가입
                 </button>
                 <span className="login-link-sep">|</span>

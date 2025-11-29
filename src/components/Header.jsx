@@ -46,7 +46,7 @@ export default function Header() {
 
       <div className="tc-header__right">
         <button className="tc-btn tc-btn--outline" onClick={() => navigate("/login")}>로그인</button>
-        <button className="tc-btn tc-btn--primary">회원가입</button>
+        <button className="tc-btn tc-btn--primary" onClick={() => navigate("/signup")}>회원가입</button>
       </div>
     </header>
   );
