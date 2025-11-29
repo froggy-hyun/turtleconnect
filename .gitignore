@@ -1,0 +1,54 @@
+# === Java ===
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+*.log
+
+# === Maven / Gradle ===
+target/
+build/
+.gradle/
+out/
+
+# === IntelliJ IDEA ===
+.idea/
+*.ipr
+*.iws
+*.iml
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# === Logs ===
+log/
+logs/
+*.log
+
+# === Operating System ===
+.DS_Store
+Thumbs.db
+
+# === Spring Boot ===
+application-dev.yaml
+application-prod.yaml
+
+# === ENV files ===
+.env
+.env.*
+!env.example
+
+# === Lombok generated ===
+.lombok/
+
+# === Redis or DB dump ===
+dump.rdb
+*.sql
+
+# === Others ===
+*.class
+*.swp
+*.swo
