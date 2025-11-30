@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 import LoginImage from "../assets/login_img.png";
 import logoTurtle from "../assets/logo-turtle.png";
+import api from "../api/axiosConfig";
+import { useAuth } from "../contexts/AuthContext";
 
 const LOGIN_API_URL = "/api/auth/login";
 
 function LoginPage() {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   // 입력값 상태
   const [email, setEmail] = useState("");
@@ -30,36 +33,37 @@ function LoginPage() {
     try {
       setLoading(true);
 
-      const res = await fetch(LOGIN_API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+      // ✅ axios 인스턴스로 로그인 요청
+      const res = await api.post(LOGIN_API_URL, {
+        email,
+        password,
       });
 
-      if (!res.ok) {
-        let msg = "로그인에 실패했습니다.";
-        try {
-          const data = await res.json();
-          if (data && data.message) msg = data.message;
-        } catch (_) {}
-        throw new Error(msg);
+      // 응답 구조: { success, data: { accessToken, refreshToken }, error }
+      const { success, data, error } = res.data || {};
+
+      if (!success) {
+        throw new Error(error || "로그인에 실패했습니다.");
       }
 
-      const data = await res.json();
-
-      // 토큰이 내려온다면 저장 (키 이름은 필요에 따라 변경하세요)
-      if (data.token) {
-        localStorage.setItem("token", data.token);
+      if (!data?.accessToken || !data?.refreshToken) {
+        throw new Error("서버에서 토큰 정보를 받지 못했습니다.");
       }
 
-      // 로그인 성공 후 이동할 페이지
+      const { accessToken, refreshToken } = data;
+
+      // ✅ AuthContext에 토큰 전달 (내부에서 localStorage에 저장)
+      login({ accessToken, refreshToken });
+
+      // 로그인 성공 시 메인 페이지로 이동
       navigate("/");
 
     } catch (err) {
-      setErrorMsg(err.message);
+      const message =
+        err.response?.data?.error ||
+        err.message ||
+        "로그인에 실패했습니다.";
+      setErrorMsg(message);
     } finally {
       setLoading(false);
     }

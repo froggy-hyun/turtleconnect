@@ -96,6 +96,21 @@ body {
   gap: 16px;
 }
 
+/* Logged-in header layout */
+.tc-header__right--logged {
+  align-items: center;
+  gap: 12px;
+}
+
+.tc-header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid rgba(0,0,0,0.06);
+}
+
 /* 버튼 기본 */
 .tc-btn {
   height: 48px;
@@ -117,6 +132,16 @@ body {
   background-color: #009ab3;
   border-color: #0f62fe;
   color: #ffffff;
+}
+
+.tc-btn--mypage {
+  background: none;
+  border: none;
+  color: #697077;
+  padding: 8px 0;
+  height: auto;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 /* 공통 섹션 타이틀/캡션 */
