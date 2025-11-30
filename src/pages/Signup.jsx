@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/signup.css";
 import SignupImage from "../assets/signup_img.png";
 
-const SIGNUP_API_URL = "http://localhost/api/auth/signup";
+const SIGNUP_API_URL = "/api/auth/signup";
 
 function SignupPage() {
   const navigate = useNavigate();
@@ -29,7 +29,6 @@ function SignupPage() {
   // 전송 상태
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState("");
-  const [submitSuccess, setSubmitSuccess] = useState("");
 
   // 뒤로가기(홈으로)
   const handleBack = () => {
@@ -40,39 +39,10 @@ function SignupPage() {
   const isPasswordMismatch =
     passwordCheck.length > 0 && password !== passwordCheck;
 
-  const handlePhoneChange = (e) => {
-    let value = e.target.value;
-
-    // 숫자만 남기기
-    value = value.replace(/[^0-9]/g, "");
-
-    // 3자리 입력되면 자동 하이픈: 010-
-    if (value.length < 3) {
-      value = value;
-    } 
-    // 3자리 + 나머지: 010-1, 010-12, 010-1234
-    else if (value.length < 7) {
-      value = value.slice(0, 3) + "-" + value.slice(3);
-    } 
-    // 010-1234-5678 형태
-    else {
-      value =
-        value.slice(0, 3) +
-        "-" +
-        value.slice(3, 7) +
-        "-" +
-        value.slice(7, 11);
-    }
-
-    setPhone(value);
-  };
-
-
   // 폼 제출 (회원가입 요청)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitError("");
-    setSubmitSuccess("");
 
     // 기본 검증
     if (!email || !name || !birthDate || !password || !passwordCheck) {
@@ -113,7 +83,9 @@ function SignupPage() {
       });
 
       if (res.status == 200){
-        setSubmitSuccess("회원가입이 완료되었습니다.");
+        // 간단한 alert로 처리하고 로그인 페이지로 이동
+        alert("회원가입이 완료되었습니다.");
+        navigate("/login");
       }
       else{
         let message = "회원가입에 실패했습니다.";
@@ -296,11 +268,6 @@ function SignupPage() {
             {submitError && (
               <div className="signup-message signup-error">
                 {submitError}
-              </div>
-            )}
-            {submitSuccess && (
-              <div className="signup-message signup-success">
-                {submitSuccess}
               </div>
             )}
 
