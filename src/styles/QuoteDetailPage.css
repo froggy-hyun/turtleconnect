@@ -1,0 +1,241 @@
+/* 전체 레이아웃 */
+.qd-wrapper {
+  background-color: #F6F7F8;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+.qd-container {
+  max-width: 1216px; /* 이미지 기준 너비 */
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* 뒤로가기 */
+.qd-back-link {
+  color: #009AB3;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  width: fit-content;
+}
+.qd-back-link .arrow { font-size: 20px; line-height: 1; padding-bottom: 2px; }
+
+/* 여행 요약 카드 */
+.trip-summary-card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  position: relative;
+}
+.trip-summary-card h1 { font-size: 32px; color: #21272A; margin: 0 0 24px 0; }
+
+.ts-badges { display: flex; gap: 40px; }
+.ts-badge-item { display: flex; gap: 12px; align-items: center; }
+.ts-icon { 
+  width: 48px; height: 48px; background: #F0F9FA; 
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+}
+.ts-text { display: flex; flex-direction: column; }
+.ts-text .label { font-size: 14px; color: #697077; }
+.ts-text .value { font-size: 16px; color: #21272A; font-weight: 700; }
+
+.ts-status-badge {
+  position: absolute; top: 32px; right: 32px;
+  background: #E3F2FD; color: #009AB3;
+  padding: 6px 16px; border-radius: 20px; font-weight: 600; font-size: 14px;
+}
+
+/* 견적 리스트 헤더 */
+.qd-list-header { margin-top: 24px; margin-left: 12px; margin-bottom: 8px;}
+.qd-list-header h2 { font-size: 24px; color: #21272A; margin: 0 0 8px 0; }
+.qd-list-header p { font-size: 16px; color: #697077; margin: 0; }
+
+/* 견적 카드 (핵심 디자인) */
+.qd-quote-list { display: flex; flex-direction: column; gap: 24px; }
+
+.quote-card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 2px solid transparent; /* 테두리 공간 미리 확보 */
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* ★ 선택된 카드 스타일 (초록색 테두리) */
+.quote-card.selected {
+  border-color: #00C851; 
+  box-shadow: 0 0 0 4px rgba(0, 200, 81, 0.1);
+}
+
+.selected-label {
+  position: absolute; top: 32px; right: 32px;
+  color: #00C851; border: 1px solid #00C851;
+  padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600;
+}
+
+/* 카드 내부 요소들 */
+.qc-header { display: flex; gap: 16px; align-items: center; margin-bottom: 24px; }
+.agency-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, #009AB3 0%, #4FD4D6 100%);
+  color: white; font-size: 24px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.agency-info h3 { margin: 0 0 4px 0; font-size: 22px; color: #21272A; }
+.agency-info p { margin: 0; color: #697077; font-size: 14px; }
+
+.qc-price-box {
+  background: #F0F9FA;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex; gap: 60px;
+  margin-bottom: 24px;
+}
+.price-item { display: flex; flex-direction: column; gap: 8px; }
+.price-item .label { font-size: 14px; color: #697077; }
+.price-item .value-main { font-size: 28px; font-weight: 700; color: #009AB3; }
+.price-item .value-sub { font-size: 24px; font-weight: 700; color: #21272A; }
+
+.qc-details { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+.detail-row { display: flex; gap: 12px; align-items: flex-start; }
+.detail-row .icon { 
+  width: 24px; height: 24px; background: #AEE3E7; 
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px;
+}
+.text-group { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.text-group .label { font-size: 14px; color: #697077; }
+.text-group .value { font-size: 16px; color: #364153; }
+.message-box {
+  background: #F9FAFB; padding: 12px; border-radius: 8px;
+  color: #364153; font-size: 15px; margin-top: 4px;
+}
+
+/* 선택 시 나타나는 입금 정보 박스 (초록색 배경) */
+.qc-bank-info {
+  background-color: #E8F5E9; /* 연한 초록색 */
+  border: 1px solid #C8E6C9;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  color: #2E7D32;
+}
+.qc-bank-info h4 { margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.qc-bank-info p { margin: 4px 0; font-size: 14px; color: #1B5E20; }
+
+/* 선택 버튼 */
+.btn-select-quote {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 18px; font-weight: 700;
+  cursor: pointer;
+  background-color: #009AB3; /* 기본 청록색 */
+  color: white;
+  transition: all 0.3s ease;
+}
+
+/* 선택된 버튼 스타일 (초록색) */
+.btn-select-quote.selected {
+  background-color: #00C851; /* 선택됨 - 초록색 */
+}
+.btn-select-quote:hover { opacity: 0.9; }
+
+/* ... 기존 CSS 아래에 추가 ... */
+
+/* 모달 배경 (어둡게) */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* 맨 위에 뜨도록 */
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* 모달 박스 */
+.modal-box {
+  background: white;
+  width: 90%;
+  max-width: 400px;
+  padding: 32px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transform: translateY(0);
+  animation: slideUp 0.3s ease-out;
+}
+
+.modal-icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.modal-box h3 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  color: #21272A;
+}
+
+.modal-box p {
+  color: #697077;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.modal-box strong {
+  color: #009AB3; /* 강조색 */
+}
+
+/* 모달 버튼 영역 */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-cancel {
+  background-color: #F2F4F8;
+  color: #4A5565;
+}
+.btn-cancel:hover { background-color: #E5E7EB; }
+
+.btn-confirm {
+  background-color: #009AB3;
+  color: white;
+}
+.btn-confirm:hover { background-color: #00879D; }
+
+/* 애니메이션 효과 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

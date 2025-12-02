@@ -1,0 +1,303 @@
+/* 전체 레이아웃 */
+.signup-page {
+  min-height: 100vh;
+  display: flex;
+  background-color: #ffffff;
+}
+
+/* 좌측 비주얼 */
+.signup-visual {
+  flex: 0 0 38%;
+  min-width: 340px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* 우측 패널 */
+.signup-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 상단 헤더 */
+.signup-header {
+  position: relative;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.signup-back-btn,
+.signup-home-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.signup-back-btn {
+  left: 40px;
+}
+
+.signup-home-btn {
+  right: 40px;
+}
+
+.signup-back-icon {
+  font-size: 18px;
+}
+
+/* 메인 영역 */
+.signup-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 안내 문구 */
+.signup-intro {
+  width: 100%;
+  max-width: 520px;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.signup-intro p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* 폼 영역 */
+.signup-form {
+  width: 100%;
+  max-width: 520px;
+  padding: 0 40px 60px;
+  box-sizing: border-box;
+}
+
+/* 필드 공통 */
+.signup-field {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+/* 이름 + 성별 한 줄 */
+.signup-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.signup-gender {
+  display: flex;
+  gap: 4px;
+}
+
+.signup-input {
+  flex: 1;
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 6px;
+  border: 1px solid #f0f0f0;
+  background-color: #fafafa;
+  font-size: 14px;
+  outline: none;
+}
+
+.signup-input::placeholder {
+  color: #bdbdbd;
+}
+
+/* 성별 버튼 */
+.signup-gender-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  border: 1px solid #f0f0f0;
+  background-color: #fafafa;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 회원 유형 라디오 */
+.signup-role-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.signup-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.signup-role input[type="radio"] {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #bdbdbd;
+  position: relative;
+}
+
+.signup-role input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background-color: #555;
+}
+
+.signup-next-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 24px;
+  background-color: #f5f5f5;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+/* 클릭하는 순간(마우스 누름) */
+.signup-next-btn:active {
+  background-color: #333;
+  color: #fff;
+}
+
+
+/* 반응형 (옵션) */
+@media (max-width: 900px) {
+  .signup-page {
+    flex-direction: column;
+  }
+
+  .signup-visual {
+    flex: 0 0 220px;
+    min-width: 100%;
+  }
+
+  .signup-intro,
+  .signup-form {
+    max-width: 100%;
+    padding: 0 20px 40px;
+  }
+}
+
+/* 성별 버튼 기본 스타일 */
+.signup-gender-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  border: 1px solid #f0f0f0;
+  background-color: #fafafa;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+/* 선택된 버튼 스타일 */
+.signup-gender-btn.selected {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+/* 비밀번호 확인 경고 문구 */
+.password-warning {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #e53935;
+}
+
+/* 비밀번호 확인 input 빨간 테두리 */
+.input-error {
+  border-color: #e53935 !important;
+}
+
+/* 회원 유형 버튼 (라디오처럼) */
+.signup-role-btn {
+  min-width: 80px;
+  height: 32px;
+  padding: 0 16px;
+  border-radius: 16px;
+  border: 1px solid #e0e0e0;
+  background-color: #fafafa;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.signup-role-btn + .signup-role-btn {
+  margin-left: 8px;
+}
+
+.signup-role-btn.active {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+/* 제출 메시지 */
+.signup-message {
+  margin: 8px 0 12px;
+  font-size: 13px;
+}
+
+.signup-error {
+  color: #e53935;
+}
+
+.signup-success {
+  color: #388e3c;
+}
+
+/* 버튼 비활성화 */
+.signup-next-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.signup-phone {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.signup-phone-input {
+  width: 80px;
+  height: 44px;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 1px solid #f0f0f0;
+  background-color: #fafafa;
+  font-size: 14px;
+  outline: none;
+}
+
+.signup-phone-sep {
+  font-size: 18px;
+  color: #444;
+}

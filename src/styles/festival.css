@@ -1,0 +1,387 @@
+/* src/styles/festival.css */
+
+/* 메인 영역을 Figma 폭에 맞게 확장 */
+.tc-main.tc-main--fullwidth {
+  max-width: 1440px;
+  padding: 0 0 80px;
+}
+
+/* ───────── 축제 히어로(상단 그라디언트 배너) ───────── */
+
+.tc-festival-hero {
+  background: linear-gradient(
+    180deg,
+    #009ab3 0%,
+    #4fd4d6 25%,
+    #e6d2b8 100%
+  );
+  padding: 48px 180px;
+  color: #ffffff;
+}
+
+.tc-festival-hero__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 150px;
+}
+
+.tc-festival-hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tc-festival-hero__title {
+  font-size: 48px;
+  line-height: 72px;
+  margin: 0;
+}
+
+.tc-festival-hero__subtitle {
+  font-size: 20px;
+  margin: 0;
+}
+
+.tc-festival-hero__description {
+  font-size: 16px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.tc-festival-hero__button {
+  background-color: #ffffff;
+  color: #009ab3;
+  border-radius: 10px;
+  border: none;
+  width: 180px;
+  height: 59px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ───────── 축제 콘텐츠 영역 ───────── */
+
+.tc-festival {
+  margin-top: 24px;
+  margin-left: 104px;
+  margin-right: 56px; /* 104 + 56 = 160 → 1440 - 160 = 1280 */
+  padding: 64px 32px 0;
+  background-color: #f6f7f8;
+}
+
+.tc-festival__tabs {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.tc-festival__tab {
+  min-width: 84px;
+  height: 51px;
+  padding: 0 24px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.tc-festival__tab--active {
+  background-color: #009ab3;
+  color: #ffffff;
+}
+
+.tc-festival__tab:not(.tc-festival__tab--active) {
+  background-color: #ffffff;
+  color: #364153;
+}
+
+.tc-festival__header {
+  margin-bottom: 32px;
+}
+
+.tc-festival__heading {
+  font-size: 48px;
+  line-height: 72px;
+  margin: 0;
+  color: #21272a;
+}
+
+.tc-festival__subheading {
+  font-size: 18px;
+  margin: 4px 0 0;
+  color: #4a5565;
+}
+
+.tc-festival__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* 축제: 세로 2장 */
+.tc-festival__list--festival {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* 관광지: 2×2 그리드 */
+.tc-festival__list--attraction {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+/* ───────── 축제 카드 ───────── */
+
+.tc-festival-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 16px;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  /* height: 504px;  ← 필요하면 살려 쓰고, 아니면 제거 */
+}
+
+.tc-festival-card__image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.tc-festival-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+.tc-festival-card__image--base {
+  z-index: 1;
+}
+
+.tc-festival-card__image--overlay {
+  z-index: 2;
+}
+
+.tc-festival-card__badge {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background-color: #fb2c36;
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 8px 16px;
+  font-size: 14px;
+  z-index: 3;
+}
+
+.tc-festival-card__body {
+  padding: 32px 32px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tc-festival-card__title {
+  font-size: 32px;
+  margin: 0;
+  color: #21272a;
+}
+
+.tc-festival-card__tagline {
+  font-size: 16px;
+  color: #4a5565;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.tc-festival-card__meta {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tc-festival-card__meta-row {
+  display: flex;
+  gap: 8px;
+  font-size: 15px;
+  align-items: center;
+}
+
+.tc-festival-card__meta-label {
+  min-width: 70px;
+  color: #21272a;
+}
+
+.tc-festival-card__meta-value {
+  color: #21272a;
+}
+
+.tc-festival-card__highlight {
+  margin-top: 8px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #fff085;
+  background-color: #fff9d6;
+  font-size: 14px;
+  color: #894b00;
+}
+
+.tc-festival-card__program {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tc-festival-card__program-title {
+  font-size: 18px;
+  margin: 0;
+  color: #21272a;
+}
+
+.tc-festival-card__program-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tc-festival-card__chip {
+  padding: 8px 16px;
+  border-radius: 9999px;
+  background-color: #aee3e7;
+  color: #3f6262;
+  font-size: 14px;
+}
+
+.tc-festival-card__button {
+  margin-top: auto;
+  width: 100%;
+  height: 48px;
+  border-radius: 10px;
+  border: none;
+  background-color: #009ab3;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ───────── 관광지 카드(2×2) ───────── */
+
+.tc-attraction-card .tc-festival-card__image-wrap {
+  position: relative;
+  height: 280px;
+}
+
+/* 상단 카테고리/할인 pill */
+.tc-attraction-card__pill {
+  position: absolute;
+  left: 16px;
+  top: 11px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #21272a;
+}
+
+.tc-attraction-card__pill--discount {
+  left: auto;
+  right: 16px;
+  top: 16px;
+  background-color: #fb2c36;
+  color: #ffffff;
+}
+
+/* 하단 평점 영역 */
+.tc-attraction-card__rating {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  padding: 8px 12px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.tc-attraction-card__rating-score {
+  font-size: 14px;
+  color: #21272a;
+}
+
+.tc-attraction-card__rating-count {
+  font-size: 12px;
+  color: #4a5565;
+}
+
+/* 본문 하이라이트 박스 (파란 박스) */
+.tc-attraction-card__highlight {
+  margin-top: 8px;
+  padding: 12px 13px;
+  border-radius: 10px;
+  border: 1px solid #bedbff;
+  background-color: #ebf3ff;
+  font-size: 13px;
+  color: #193cb8;
+}
+
+/* 후기/상세보기 푸터 */
+.tc-attraction-card__footer {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.tc-attraction-card__reviews {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #4a5565;
+}
+
+.tc-attraction-card__more {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 14px;
+  color: #009ab3;
+  cursor: pointer;
+}
+
+/* 축제/관광지 반응형 */
+@media (max-width: 1024px) {
+  .tc-festival-hero {
+    padding: 32px 24px;
+  }
+
+  .tc-festival-hero__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    gap: 16px;
+  }
+
+  .tc-festival {
+    margin: 16px;
+    padding: 32px 16px 0;
+  }
+
+  .tc-festival-card {
+    grid-template-columns: 1fr;
+  }
+
+  .tc-festival-card__image-wrap {
+    height: 240px;
+  }
+}

@@ -1,0 +1,168 @@
+/* src/styles/global.css */
+
+/* 전역 기본 설정 */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR",
+    system-ui, sans-serif;
+  color: #212121;
+  background-color: #f6f7f8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f6f7f8;
+}
+
+.tc-root {
+  min-height: 100vh;
+  background-color: #f6f7f8;
+}
+
+/* 공통 메인 레이아웃 */
+.tc-main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px 80px 80px;
+}
+
+/* 헤더 공통 */
+.tc-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+  border-bottom: 1px solid #dde1e6;
+  background-color: #ffffff;
+}
+
+.tc-header__left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+}
+
+.tc-header__logo-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.tc-header__logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tc-header__logo-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #697077;
+}
+
+.tc-header__logo-sub {
+  font-size: 12px;
+  color: #697077;
+}
+
+.tc-header__nav {
+  display: flex;
+  gap: 16px;
+}
+
+.tc-header__nav-item {
+  border: none;
+  background: none;
+  padding: 12px 8px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #21272a;
+}
+
+.tc-header__nav-item--active {
+  color: #009ab3;
+}
+
+.tc-header__right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+/* Logged-in header layout */
+.tc-header__right--logged {
+  align-items: center;
+  gap: 12px;
+}
+
+.tc-header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid rgba(0,0,0,0.06);
+}
+
+/* 버튼 기본 */
+.tc-btn {
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.tc-btn--outline {
+  background-color: #ffffff;
+  color: #0f62fe;
+  border-color: #0f62fe;
+}
+
+.tc-btn--primary {
+  background-color: #009ab3;
+  border-color: #0f62fe;
+  color: #ffffff;
+}
+
+.tc-btn--mypage {
+  background: none;
+  border: none;
+  color: #697077;
+  padding: 8px 0;
+  height: auto;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 공통 섹션 타이틀/캡션 */
+.tc-section-title {
+  font-size: 20px;
+  margin: 0 0 4px;
+}
+
+.tc-section-caption {
+  font-size: 12px;
+  color: #555;
+  margin: 0 0 12px;
+}
+
+/* 공통 반응형 */
+@media (max-width: 1024px) {
+  .tc-main {
+    padding: 24px 16px 40px;
+  }
+
+  .tc-header {
+    padding: 0 16px;
+  }
+}
