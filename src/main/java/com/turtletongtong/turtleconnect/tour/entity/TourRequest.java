@@ -62,6 +62,9 @@ public class TourRequest {
         this.participantCount = participantCount;
         this.status = status;
     }
+    public void match() {
+        this.status = TourRequestStatus.MATCHED;
+    }
 
     public void cancel() {
         this.status = TourRequestStatus.CANCELED;

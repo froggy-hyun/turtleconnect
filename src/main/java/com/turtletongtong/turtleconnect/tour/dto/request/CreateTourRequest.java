@@ -24,4 +24,5 @@ public record CreateTourRequest(
         @Schema(description = "참여 인원 수", example = "3")
         @NotNull @Min(1)
         Integer participantCount
+
 ) {}
