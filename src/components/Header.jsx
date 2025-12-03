@@ -1,7 +1,8 @@
 // src/components/Header.jsx
 import { useLocation, useNavigate } from "react-router-dom";
-// logoTurtle import 경로는 현재 구조에 맞게 그대로 사용하세요.
 import logoTurtle from "../assets/logo-turtle.png";
+import ellipseAvatar from "../assets/Ellipse.png";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ export default function Header() {
 
   const isHome = location.pathname === "/";
   const isFestival = location.pathname.startsWith("/festivals");
+  const { isLoggedIn, logout } = useAuth();
 
   return (
     <header className="tc-header">
@@ -45,9 +47,34 @@ export default function Header() {
         </button>
       </nav>
 
-      <div className="tc-header__right">
-        <button className="tc-btn tc-btn--outline">로그인</button>
-        <button className="tc-btn tc-btn--primary">회원가입</button>
+      <div className={"tc-header__right" + (isLoggedIn ? " tc-header__right--logged" : "") }>
+        {!isLoggedIn ? (
+          <>
+            <button className="tc-btn tc-btn--outline" onClick={() => navigate("/login")}>로그인</button>
+            <button className="tc-btn tc-btn--primary" onClick={() => navigate("/signup")}>회원가입</button>
+          </>
+        ) : (
+          <>
+            <button className="tc-btn tc-btn--mypage" onClick={() => navigate("/usermypage")}>마이페이지</button>
+
+            <img
+              src={localStorage.getItem("profile_image") || ellipseAvatar}
+              alt="프로필"
+              className="tc-header__avatar"
+              onClick={() => navigate("/usermypage")}
+            />
+
+            <button
+              className="tc-btn tc-btn--outline"
+              onClick={() => {
+                logout();
+                navigate("/");
+              }}
+            >
+              로그아웃
+            </button>
+          </>
+        )}
       </div>
     </header>
   );

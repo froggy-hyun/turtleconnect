@@ -1,10 +1,18 @@
 // src/pages/TurtleConnectMain.jsx
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createTourRequest } from "../api/tourApi";
 import "../styles/main-and-booking.css";
 import Header from "../components/Header";
 import banner from "../assets/banner.png"
 import userImg from "../assets/Ellipse.png";
 
+const LOCATION_MAP = {
+  "강남역": 1,
+  "서울역": 2,
+  "정왕역": 3,
+  "시흥시청": 4
+};
 const PICKUP_OPTIONS = ["강남역", "서울역", "정왕역", "시흥시청"];
 
 export default function TurtleConnectMain() {
@@ -37,6 +45,7 @@ function Hero() {
 }
 
 function BookingSection() {
+  const navigate = useNavigate();
   const [pickup, setPickup] = useState("강남역");
   const [isPickupOpen, setPickupOpen] = useState(false);
   const [people, setPeople] = useState(1);
@@ -58,6 +67,53 @@ function BookingSection() {
     setSelectedDates([]); // 날짜 선택 초기화
   };
 
+ const handleBooking = async () => {
+    // 1. 로그인 체크
+    const token = localStorage.getItem("access_token");
+    if (!token) {
+      alert("로그인이 필요한 서비스입니다.");
+      navigate("/login");
+      return;
+    }
+
+    // 2. 유효성 검사
+    if (selectedDates.length === 0) {
+      alert("날짜를 선택해주세요.");
+      return;
+    }
+
+    try {
+      // 3. 지역 ID 변환 (공통)
+      const locationId = LOCATION_MAP[pickup] || 1;
+
+      // 4. [핵심 변경] 선택한 날짜 개수만큼 요청 만들기
+      // map 함수를 써서 "약속(Promise)"들의 배열을 만듭니다.
+      const requestPromises = selectedDates.map((date) => {
+        
+        // 각각의 요청 데이터 생성 (시작일 = 종료일 = 해당 날짜)
+        const requestData = {
+          locationId: locationId,
+          startDate: date, // "2025-11-07"
+          endDate: date,   // "2025-11-07" (당일치기)
+          participantCount: people
+        };
+
+        // API 호출 함수 실행 (아직 결과는 안 옴)
+        return createTourRequest(requestData);
+      });
+
+      // 5. 모든 요청이 다 끝날 때까지 기다림 (병렬 처리)
+      await Promise.all(requestPromises);
+      
+      alert(`${selectedDates.length}건의 견적 신청이 완료되었습니다!`);
+      navigate("/usermypage");
+
+    } catch (error) {
+      console.error(error);
+      alert("일부 신청 중 오류가 발생했습니다. 다시 시도해주세요.");
+    }
+  };
+
   return (
     <section className="tc-booking">
       <div className="tc-booking__card">
@@ -70,8 +126,7 @@ function BookingSection() {
 
           <div className="tc-booking__participants">
             <div className="tc-booking__participants-name">
-              <img src={userImg} />
-              <p>박대시, 김니키 외 16명</p>
+              거북섬으로 가장 편하게 가는 방법!
             </div>
           </div>
 
@@ -156,7 +211,8 @@ function BookingSection() {
             </div>
           </div>
 
-          <button className="tc-btn tc-btn--primary tc-booking__submit">
+          <button className="tc-btn tc-btn--primary tc-booking__submit"
+          onClick={handleBooking}>
             선택하기
           </button>
 

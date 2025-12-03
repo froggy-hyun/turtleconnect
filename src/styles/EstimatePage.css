@@ -1,0 +1,97 @@
+/* 전체 레이아웃 */
+.est-page-wrapper {
+  background-color: #F6F7F8;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+.est-content-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* 뒤로가기 링크 */
+.back-link {
+  color: #009AB3;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-bottom: 24px;
+}
+.arrow-icon { font-size: 20px; line-height: 1; padding-bottom: 2px; }
+
+/* 페이지 타이틀 */
+.page-title-section { margin-bottom: 40px; }
+.page-title-section h1 { font-size: 32px; font-weight: 700; color: #21272A; margin: 0 0 12px 0; }
+.page-title-section p { font-size: 16px; color: #697077; margin: 0; }
+
+/* 그리드 레이아웃 (반응형) */
+.est-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 화면 크기에 따라 자동 정렬 */
+  gap: 24px;
+}
+
+/* 카드 스타일 */
+.est-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.est-img-box { position: relative; height: 200px; }
+.est-img-box img { width: 100%; height: 100%; object-fit: cover; }
+.badge-location {
+  position: absolute; top: 16px; left: 16px;
+  background: #009AB3; color: white;
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 13px; font-weight: 700;
+}
+
+.est-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+
+.est-title-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+.est-title-row h3 { font-size: 22px; font-weight: 700; color: #21272A; margin: 0; }
+.btn-delete { background: none; border: none; font-size: 18px; cursor: pointer; opacity: 0.5; transition: opacity 0.2s; }
+.btn-delete:hover { opacity: 1; }
+
+.est-info p { margin: 6px 0; font-size: 15px; color: #4A5565; display: flex; align-items: center; gap: 8px; }
+.est-info .icon { width: 20px; text-align: center; }
+
+/* 상태 뱃지 & 버튼 디자인 분기 */
+.est-status-badge {
+  margin: 20px 0 16px 0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  width: fit-content;
+}
+.est-status-badge.arrived { background-color: #E3F2FD; color: #1976D2; } /* 파란색 배경 */
+.est-status-badge.waiting { background-color: #F5F5F5; color: #757575; } /* 회색 배경 */
+
+.est-action-btn {
+  margin-top: auto;
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+/* 견적 도착 (활성 버튼) */
+.est-action-btn.arrived { background-color: #009AB3; color: white; }
+.est-action-btn.arrived:hover { background-color: #007f94; }
+
+/* 대기중 (비활성 버튼) */
+.est-action-btn.waiting { background-color: #E0E0E0; color: #9E9E9E; cursor: default; }

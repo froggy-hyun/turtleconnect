@@ -1,0 +1,329 @@
+/* 기본 초기화 및 배경 */
+.mypage-wrapper {
+  background-color: #F6F7F8;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.mypage-container {
+  max-width: 1280px; /* 전체 폭 고정 (원하는 경우 100%로 변경 가능) */
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* --- 공통 카드 스타일 --- */
+.mp-card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+  padding: 32px;
+}
+.mp-card.bg-transparent {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+.mp-card.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mp-header { margin-bottom: 24px; }
+.mp-header h2 { font-size: 24px; font-weight: 350; color: #21272A; margin: 0; }
+.mp-header .sub-text { font-size: 14px; color: #697077; margin-top: 8px; }
+.mp-header.row-between { display: flex; justify-content: space-between; align-items: flex-end; }
+
+/* --- 1. 프로필 섹션 --- */
+.profile-body { display: flex; align-items: center; position: relative; }
+.profile-img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; margin-right: 32px; }
+.profile-info { display: flex; flex-direction: column; gap: 16px; min-width: 200px; }
+.info-group .label { font-size: 14px; color: #697077; display: block; margin-bottom: 4px; }
+.info-group .value { font-size: 16px; color: #21272A; }
+.value-row { display: flex; align-items: center; gap: 8px; }
+
+.btn-outline-xs {
+  border: 1px solid #009AB3;
+  color: #009AB3;
+  background: white;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.profile-actions {
+  margin-left: auto; /* 우측 끝으로 밀기 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 84px; /* 이미지 높이와 맞춤 */
+}
+.text-link-danger { color: #21272A; font-size: 14px; cursor: pointer; text-decoration: underline; margin-bottom: auto; }
+.btn-solid-sm { background: #009AB3; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; }
+
+/* --- 2. 관심사 --- */
+.tag-list { display: flex; gap: 12px; flex-wrap: wrap; }
+.tag-item {
+  background: #E0F7FA;
+  color: #009AB3;
+  border: 1px solid #009AB3;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 14px;
+}
+.tag-add-btn {
+  background: white;
+  color: #009AB3;
+  border: 2px solid #009AB3;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* --- 3. 비밀번호 --- */
+.btn-outline-md {
+  border: 2px solid #009AB3;
+  color: #009AB3;
+  background: white;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* --- 4. 견적 카드 리스트 (Grid Layout) --- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* 화면 꽉 차게 자동 배열 */
+  gap: 24px;
+}
+
+.trip-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #DDE1E6;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img-area { position: relative; height: 180px; }
+.card-img-area img { width: 100%; height: 100%; object-fit: cover; }
+.location-tag {
+  position: absolute; top: 12px; left: 16px;
+  background: #009AB3; color: white;
+  padding: 4px 12px; border-radius: 20px;
+  font-size: 12px; font-weight: bold;
+}
+
+.card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.card-body h3 { font-size: 24px; margin: 0 0 16px 0; color: #21272A; }
+.card-meta p { margin: 4px 0; font-size: 15px; color: #4A5565; }
+
+.status-badge {
+  margin: 16px 0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: inline-block;
+  width: fit-content;
+}
+.status-badge.blue { background: #DBEAFE; color: #1447E6; }
+.status-badge.gray { background: #F3F4F6; color: #4A5565; }
+.status-badge.green { background: #DCFCE7; color: #008236; }
+
+.card-btn {
+  margin-top: auto;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.card-btn.active { background: #009AB3; color: white; }
+.card-btn.disabled { background: #E5E7EB; color: #6A7282; cursor: default; }
+
+/* 옵션 2: 회색 테두리 -> 호버시 컬러 변경 */
+.btn-more-link {
+  background: white;
+  border: 1px solid #DDE1E6; /* 연한 회색 테두리 */
+  cursor: pointer;
+  
+  color: #4A5565; /* 기본은 진한 회색 */
+  font-size: 14px;
+  font-weight: 500;
+  
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 20px; /* 둥근 캡슐 모양 */
+  transition: all 0.2s ease;
+}
+
+.btn-more-link:hover {
+  border-color: #009AB3;
+  color: #009AB3;
+  background-color: #fcfcfc;
+}
+
+.btn-more-link .arrow { font-size: 16px; }
+
+/* --- 5. 확정된 여행 (상세) --- */
+.confirmed-box {
+  border: 2px solid #009AB3;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.trip-summary { display: flex; gap: 24px; margin-bottom: 16px; position: relative; }
+.trip-thumb { width: 120px; height: 120px; border-radius: 8px; object-fit: cover; }
+.trip-info { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.tag-sm { background: #009AB3; color: white; font-size: 12px; padding: 4px 8px; border-radius: 4px; align-self: flex-start; }
+.trip-info h3 { font-size: 20px; margin: 0; color: #21272A; }
+.meta-text span { font-size: 14px; color: #697077; margin-right: 8px; }
+
+.trip-price { width: 200px; display: flex; margin-top: 24px; margin-right: 16px; flex-direction: column; justify-content: center; }
+.price-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+.price-row strong { font-size: 16px; color: #21272A; }
+
+.divider { height: 1px; background: rgba(0,0,0,0.1); margin-bottom: 24px; }
+
+.info-grid { display: flex; gap: 20px; }
+.info-panel {
+  flex: 1;
+  padding: 20px;
+  border-radius: 8px;
+}
+.info-panel.gray { background: #F6F7F8; }
+.info-panel.cyan { background: #E0F7FA; }
+
+.panel-title { font-size: 16px; font-weight: bold; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.info-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+.info-row span:first-child { color: #697077; }
+.info-row span:last-child { color: #21272A; font-weight: 500; }
+.badge-complete { background: #009AB3; color: white; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+
+/* 헤더 CSS (오버라이드) */
+.tc-header {
+  background: white;
+  border-bottom: 1px solid #DDE1E6;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+.tc-header__nav button { background: none; border: none; font-size: 16px; margin: 0 12px; cursor: pointer; color: #21272A; }
+.tc-header__right { display: flex; align-items: center; gap: 24px; }
+.user-status { display: flex; align-items: center; gap: 8px; }
+.active-text { color: #009AB3; font-weight: 600; }
+.header-avatar { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #eee; }
+.btn-logout { border: 1px solid #0F62FE; color: #0F62FE; background: white; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
+
+.card-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.card-title-row h3 {
+  margin: 0; /* 기존 마진 제거 (row가 제어) */
+  font-size: 24px;
+  color: #21272A;
+}
+
+/* 삭제 버튼 스타일 (EstimatePage와 동일하게) */
+.btn-delete {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  padding: 0 4px;
+}
+
+.btn-delete:hover {
+  opacity: 1;
+  color: #d32f2f; /* 호버 시 빨간색 */
+}
+
+/* 리스트 레이아웃 */
+.confirmed-list-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* 개별 카드 (상대 위치 지정 필수 - 삭제 버튼 배치를 위해) */
+.confirmed-box {
+  position: relative; /* 삭제 버튼의 기준점 */
+  border: 2px solid #009AB3;
+  border-radius: 14px;
+  padding: 24px;
+  background-color: white;
+}
+
+/* 데이터 없음 (Empty State) */
+.empty-message {
+  padding: 40px;
+  text-align: center;
+  color: #888;
+  line-height: 1.6;
+}
+
+/* 예약 취소 버튼 스타일 */
+.btn-cancel-trip {
+  position: absolute;
+  top: 16px;
+  right: 32px;
+  background-color: #E0F7FA; 
+  color: #006064;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.btn-cancel-trip:hover {
+  background-color: #B2EBF2; /* 호버 시 조금 더 진한 색 */
+}
+
+/* 입금 상태 배지 (공통) */
+.badge-deposit-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* 입금 상태 - 완료 (초록색) */
+.badge-deposit-status.complete {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+/* 입금 상태 - 미완료 (주황색) */
+.badge-deposit-status.incomplete {
+  background-color: #FDCB6E;
+  color: #FF9800;
+}
