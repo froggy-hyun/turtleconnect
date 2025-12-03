@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../../components/Header";
 import { getMyRequests, cancelTourRequest } from "../../api/tourApi"; // API 가져오기
 import "../../styles/EstimatePage.css";
 import logoTurtle from "../../assets/logo-turtle.png";
@@ -27,32 +28,6 @@ export default function EstimatePage() {
 }
 
 // --- 하위 컴포넌트 ---
-
-function Header() {
-  const navigate = useNavigate();
-  return (
-    <header className="tc-header">
-      <div className="tc-header__left" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
-        <img src={logoTurtle} alt="로고" className="tc-header__logo-icon" />
-        <div className="tc-header__logo-text">
-          <div className="tc-header__logo-title">거북섬 커넥트</div>
-          <div className="tc-header__logo-sub">Turtle Connect</div>
-        </div>
-      </div>
-      <nav className="tc-header__nav">
-        <button onClick={() => navigate("/")}>홈</button>
-        <button>축제 & 관광지</button>
-      </nav>
-      <div className="tc-header__right">
-        <div className="user-status">
-          <span className="active-text" onClick={() => navigate("/usermypage")} style={{cursor:'pointer'}}>마이페이지</span>
-          <img src="https://placehold.co/40x40" alt="프로필" className="header-avatar"/>
-        </div>
-        <button className="btn-logout" onClick={() => navigate("/")}>로그아웃</button>
-      </div>
-    </header>
-  );
-}
 
 function BackLink() {
   const navigate = useNavigate();

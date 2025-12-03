@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../../styles/QuoteDetailPage.css";
+import Header from "../../components/Header";
 import logoTurtle from "../../assets/logo-turtle.png";
 
 export default function QuoteDetailPage() {
@@ -102,7 +103,7 @@ export default function QuoteDetailPage() {
 
   return (
     <div className="qd-wrapper">
-      <Header navigate={navigate} />
+      <Header />
       
       <main className="qd-container">
         <div className="qd-back-link" onClick={() => navigate(-1)}>
@@ -157,31 +158,6 @@ function ConfirmationModal({ onClose, onConfirm }) {
         </div>
       </div>
     </div>
-  );
-}
-
-function Header({ navigate }) {
-  return (
-    <header className="tc-header">
-      <div className="tc-header__left" onClick={() => navigate("/")} style={{cursor:'pointer'}}>
-        <img src={logoTurtle} alt="로고" className="tc-header__logo-icon" />
-        <div className="tc-header__logo-text">
-          <div className="tc-header__logo-title">거북섬 커넥트</div>
-          <div className="tc-header__logo-sub">Turtle Connect</div>
-        </div>
-      </div>
-      <nav className="tc-header__nav">
-        <button onClick={() => navigate("/")}>홈</button>
-        <button>축제 & 관광지</button>
-      </nav>
-      <div className="tc-header__right">
-        <div className="user-status">
-          <span className="active-text"onClick={() => navigate("/usermypage")} style={{cursor:'pointer'}}>마이페이지</span>
-          <img src="https://placehold.co/40x40" alt="프로필" className="header-avatar"/>
-        </div>
-        <button className="btn-logout" onClick={() => navigate("/")}>로그아웃</button>
-      </div>
-    </header>
   );
 }
 
