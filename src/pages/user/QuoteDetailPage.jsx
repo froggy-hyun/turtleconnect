@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../../styles/QuoteDetailPage.css";
 import Header from "../../components/Header";
@@ -14,7 +14,8 @@ export default function QuoteDetailPage() {
       title: "정보 없음", 
       date: "-", 
       people: 0, 
-      pickup: "-" 
+      pickup: "-",
+      id: null
     } 
   };
 
@@ -63,9 +64,35 @@ export default function QuoteDetailPage() {
     }
   ];
 
+  // 마이페이지 확정 상태 동기화
+  useEffect(() => {
+    // 1. 로컬 스토리지에서 확정된 여행 목록 가져오기
+    const confirmedTrips = JSON.parse(localStorage.getItem("confirmedTrips") || "[]");
+
+    // 2. 현재 페이지의 여행(tripInfo.id)과 일치하는 확정 내역 찾기
+    // tripInfo.id는 UserMyPage에서 넘어온 여행 고유 ID입니다.
+    const matchedTrip = confirmedTrips.find(item => item.tripInfo.id === tripInfo.id);
+
+    if (matchedTrip) {
+      // 3. 확정 내역이 있다면, 해당 견적의 ID를 선택 상태로 설정
+      // (QuoteCard가 자동으로 초록색이 됨)
+      setSelectedId(matchedTrip.quoteInfo.id);
+    } else {
+      // 4. 확정 내역이 없다면 (마이페이지에서 취소했다면), 선택 해제
+      setSelectedId(null);
+    }
+  }, [tripInfo]); // tripInfo가 로드될 때 실행
+
   // 2. 버튼 클릭 핸들러
   const handleSelectClick = (id) => {
     if (selectedId === id) return;
+
+    // 2. 다른 견적이 이미 선택되어 있다면(확정 상태), 변경 불가 알림
+    if (selectedId !== null) {
+      alert("이미 확정된 견적이 있습니다.\n변경하시려면 마이페이지에서 기존 예약을 취소해주세요.");
+      return;
+    }
+
     setPendingId(id);    
     setIsModalOpen(true); 
   };
@@ -87,6 +114,9 @@ export default function QuoteDetailPage() {
       // 기존 데이터 가져오기
       const existingTrips = JSON.parse(localStorage.getItem("confirmedTrips") || "[]");
       
+      // 중복 저장 방지
+      const filteredTrips = existingTrips.filter(t => t.tripInfo.id !== tripInfo.id);
+
       // 새 데이터 추가하여 저장
       localStorage.setItem("confirmedTrips", JSON.stringify([confirmedTrip, ...existingTrips]));
       
@@ -118,14 +148,21 @@ export default function QuoteDetailPage() {
         </div>
 
         <div className="qd-quote-list">
-          {quotes.map((quote) => (
+          {quotes.map((quote) => {
+            // 현재 이 카드가 선택되었는지 확인
+          const isCurrentSelected = selectedId === quote.id;
+          // 다른 어떤 카드라도 선택된 상태인지 확인 (잠금 여부)
+          // selectedId가 존재하는데, 그게 나(quote.id)는 아닐 때 -> 잠김
+          const isLocked = (selectedId !== null) && (!isCurrentSelected);
+            return (
             <QuoteCard 
               key={quote.id} 
               data={quote} 
               isSelected={selectedId === quote.id} 
               onSelect={() => handleSelectClick(quote.id)}
             />
-          ))}
+            );
+          })}
         </div>
       </main>
 
@@ -194,10 +231,16 @@ function TripSummaryCard({ info }) {
   );
 }
 
-function QuoteCard({ data, isSelected, onSelect }) {
+function QuoteCard({ data, isSelected, isLocked, onSelect }) {
+  // 버튼 텍스트 결정 로직
+  let buttonText = "이 견적 선택하기";
+  if (isSelected) buttonText = "✔ 선택된 견적입니다";
+  if (isLocked) buttonText = "이미 확정된 건이 있습니다";
+
   return (
-    <div className={`quote-card ${isSelected ? "selected" : ""}`}>
+    <div className={`quote-card ${isSelected ? "selected" : ""} ${isLocked ? "locked" : ""}`}>
       {isSelected && <div className="selected-label">✔ 선택됨</div>}
+
       <div className="qc-header">
         <div className="agency-avatar">{data.agencyBadge}</div>
         <div className="agency-info"><h3>{data.agencyName}</h3><p>{data.date}</p></div>
@@ -219,8 +262,14 @@ function QuoteCard({ data, isSelected, onSelect }) {
           <p><strong>연락처:</strong> {data.bankInfo.contact}</p>
         </div>
       )}
-      <button className={`btn-select-quote ${isSelected ? "selected" : ""}`} onClick={onSelect}>
-        {isSelected ? "✔ 선택된 견적입니다" : "이 견적 선택하기"}
+
+      {/* 버튼: 선택되었거나(selected) 잠겼으면(locked) 클릭 방지 */}
+      <button 
+        className={`btn-select-quote ${isSelected ? "selected" : ""} ${isLocked ? "disabled" : ""}`} 
+        onClick={onSelect}
+        disabled={isSelected || isLocked} // 버튼 자체를 비활성화
+      >
+        {buttonText}
       </button>
     </div>
   );
