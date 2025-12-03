@@ -185,14 +185,14 @@
   padding: 24px;
 }
 
-.trip-summary { display: flex; gap: 24px; margin-bottom: 24px; position: relative; }
+.trip-summary { display: flex; gap: 24px; margin-bottom: 16px; position: relative; }
 .trip-thumb { width: 120px; height: 120px; border-radius: 8px; object-fit: cover; }
 .trip-info { flex: 1; display: flex; flex-direction: column; gap: 8px; }
 .tag-sm { background: #009AB3; color: white; font-size: 12px; padding: 4px 8px; border-radius: 4px; align-self: flex-start; }
 .trip-info h3 { font-size: 20px; margin: 0; color: #21272A; }
 .meta-text span { font-size: 14px; color: #697077; margin-right: 8px; }
 
-.trip-price { width: 200px; display: flex; flex-direction: column; justify-content: center; }
+.trip-price { width: 200px; display: flex; margin-top: 24px; margin-right: 16px; flex-direction: column; justify-content: center; }
 .price-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
 .price-row strong { font-size: 16px; color: #21272A; }
 
@@ -257,4 +257,73 @@
 .btn-delete:hover {
   opacity: 1;
   color: #d32f2f; /* 호버 시 빨간색 */
+}
+
+/* 리스트 레이아웃 */
+.confirmed-list-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* 개별 카드 (상대 위치 지정 필수 - 삭제 버튼 배치를 위해) */
+.confirmed-box {
+  position: relative; /* 삭제 버튼의 기준점 */
+  border: 2px solid #009AB3;
+  border-radius: 14px;
+  padding: 24px;
+  background-color: white;
+}
+
+/* 데이터 없음 (Empty State) */
+.empty-message {
+  padding: 40px;
+  text-align: center;
+  color: #888;
+  line-height: 1.6;
+}
+
+/* 예약 취소 버튼 스타일 */
+.btn-cancel-trip {
+  position: absolute;
+  top: 16px;
+  right: 32px;
+  background-color: #E0F7FA; 
+  color: #006064;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.btn-cancel-trip:hover {
+  background-color: #B2EBF2; /* 호버 시 조금 더 진한 색 */
+}
+
+/* 입금 상태 배지 (공통) */
+.badge-deposit-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* 입금 상태 - 완료 (초록색) */
+.badge-deposit-status.complete {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+/* 입금 상태 - 미완료 (주황색) */
+.badge-deposit-status.incomplete {
+  background-color: #FDCB6E;
+  color: #FF9800;
 }

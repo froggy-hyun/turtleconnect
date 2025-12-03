@@ -37,7 +37,9 @@ export default function QuoteDetailPage() {
       bankInfo: {
         account: "기업은행 123-456-789012",
         holder: "거북섬 여행사",
-        contact: "010-9876-5432"
+        contact: "010-9876-5432",
+        email: "info@turtle.com",
+        manager: "김여행"
       }
     },
     {
@@ -53,7 +55,9 @@ export default function QuoteDetailPage() {
       bankInfo: {
         account: "국민은행 987-654-321098",
         holder: "터틀 트래블",
-        contact: "010-1111-2222"
+        contact: "010-1111-2222",
+        email: "support@turtletravel.com",
+        manager: "박터틀"
       }
     }
   ];
@@ -67,10 +71,33 @@ export default function QuoteDetailPage() {
 
   // 3. 모달 확인 핸들러
   const handleConfirmSelect = () => {
+    // 선택된 견적 데이터 찾기
+    const finalQuote = quotes.find(q => q.id === pendingId);
+    
+    if (finalQuote) {
+      // 로컬 스토리지에 저장할 데이터 객체 생성
+      const confirmedTrip = {
+        id: Date.now(), // 고유 ID 생성
+        tripInfo: tripInfo, // 여행지 정보 (UserMyPage에서 넘어온 것)
+        quoteInfo: finalQuote, // 선택한 여행사 견적 정보
+        confirmedAt: new Date().toLocaleDateString() // 확정 날짜
+      };
+
+      // 기존 데이터 가져오기
+      const existingTrips = JSON.parse(localStorage.getItem("confirmedTrips") || "[]");
+      
+      // 새 데이터 추가하여 저장
+      localStorage.setItem("confirmedTrips", JSON.stringify([confirmedTrip, ...existingTrips]));
+      
+      console.log("저장 완료:", confirmedTrip);
+    }
+
     setSelectedId(pendingId); 
     setIsModalOpen(false);    
     setPendingId(null);       
-    console.log(`여행사(ID: ${pendingId})에게 선택 알림 전송 완료!`);
+    
+    alert("견적 선택이 완료되었습니다! 마이페이지로 이동합니다.");
+    navigate("/usermypage");
   };
 
   return (
@@ -149,7 +176,7 @@ function Header({ navigate }) {
       </nav>
       <div className="tc-header__right">
         <div className="user-status">
-          <span className="active-text">마이페이지</span>
+          <span className="active-text"onClick={() => navigate("/usermypage")} style={{cursor:'pointer'}}>마이페이지</span>
           <img src="https://placehold.co/40x40" alt="프로필" className="header-avatar"/>
         </div>
         <button className="btn-logout" onClick={() => navigate("/")}>로그아웃</button>

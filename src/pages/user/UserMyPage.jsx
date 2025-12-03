@@ -284,45 +284,105 @@ function PasswordSection() {
 }
 
 function ConfirmedTripSection() {
+  const [confirmedTrips, setConfirmedTrips] = useState([]);
+
+  useEffect(() => {
+    const loadedTrips = JSON.parse(localStorage.getItem("confirmedTrips") || "[]");
+    setConfirmedTrips(loadedTrips);
+  }, []);
+
+  const handleDeleteTrip = (id) => {
+    if (window.confirm("정말 이 예약을 취소하시겠습니까?")) {
+      const updatedTrips = confirmedTrips.filter((trip) => trip.id !== id);
+      setConfirmedTrips(updatedTrips);
+      localStorage.setItem("confirmedTrips", JSON.stringify(updatedTrips));
+    }
+  };
+
   return (
     <section className="mp-card">
-      <div className="mp-header">
-        <h2>확정된 여행</h2>
-        <p className="sub-text">매칭이 확정된 여행 일정입니다</p>
-      </div>
-      <div className="confirmed-box">
-        <div className="trip-summary">
-          <img src="https://placehold.co/120x120" alt="여행지" className="trip-thumb" />
-          <div className="trip-info">
-             <span className="tag-sm">거북섬</span>
-             <h3>서울역</h3>
-             <div className="meta-text">
-               <span>2025년 12월 01일</span> | <span>오전 9:00 출발</span> | <span>2명</span>
-             </div>
-          </div>
-          <div className="trip-price">
-            <div className="price-row"><span>총 금액</span><strong>₩20,000</strong></div>
-            <div className="price-row"><span>1인당 금액</span><strong>₩10,000</strong></div>
-          </div>
-        </div>
-        <div className="divider"></div>
-        <div className="info-grid">
-          <div className="info-panel gray">
-             <div className="panel-title"><span className="icon-box blue-border">📄</span> 입금 정보</div>
-             <div className="info-row"><span>입금 계좌</span> <span>기업은행 123-456-789012</span></div>
-             <div className="info-row"><span>예금주</span> <span className="align-right">거북섬 여행사</span></div>
-             <div className="info-row"><span>입금 상태</span> <span className="badge-complete">완료</span></div>
-             <div className="info-row"><span>입금일</span> <span>2025년 11월 24일</span></div>
-          </div>
-          <div className="info-panel cyan">
-             <div className="panel-title"><span className="icon-box blue-border">📞</span> 여행사 연락처</div>
-             <div className="info-row"><span>여행사명</span> <span className="align-right">거북섬 여행사</span></div>
-             <div className="info-row"><span>전화번호</span> <span>010-9876-5432</span></div>
-             <div className="info-row"><span>이메일</span> <span>info@turtle.com</span></div>
-             <div className="info-row"><span>담당자</span> <span>김여행 (010-9876-5432)</span></div>
-          </div>
+      <div className="mp-header row-between">
+        <div>
+          <h2>확정된 여행</h2>
+          <p className="sub-text">매칭이 확정된 여행 일정입니다</p>
         </div>
       </div>
+
+      {confirmedTrips.length === 0 ? (
+        <div className="empty-message">
+          아직 확정된 여행이 없습니다.<br />
+          견적서에서 마음에 드는 여행사를 선택해주세요!
+        </div>
+      ) : (
+        <div className="confirmed-list-layout">
+          {confirmedTrips.map((item) => {
+            const tInfo = item.tripInfo || {};
+            const qInfo = item.quoteInfo || {};
+            const bank = qInfo.bankInfo || {};
+            
+            const status = item.depositStatus || "미완료";
+            const isCompleted = status === "완료";
+
+            return (
+              <div key={item.id} className="confirmed-box">
+                
+                {!isCompleted && (
+                  <button
+                    className="btn-cancel-trip"
+                    onClick={() => handleDeleteTrip(item.id)}
+                  >
+                    예약 취소 ✕
+                  </button>
+                )}
+
+                <div className="trip-summary">
+                  <img src="https://placehold.co/120x120" alt="여행지" className="trip-thumb" />
+                  <div className="trip-info">
+                    <span className="tag-sm">거북섬</span>
+                    <h3>{tInfo.title}</h3>
+                    <div className="meta-text">
+                      <span>{tInfo.date}</span> | <span>{tInfo.people}명</span>
+                    </div>
+                  </div>
+                  <div className="trip-price">
+                    <div className="price-row"><span>총 금액</span><strong>₩{qInfo.totalPrice}</strong></div>
+                    <div className="price-row"><span>1인당 금액</span><strong>₩{qInfo.perPerson}</strong></div>
+                  </div>
+                </div>
+
+                <div className="divider"></div>
+
+                <div className="info-grid">
+                  <div className="info-panel gray">
+                    <div className="panel-title">
+                      <span className="icon-box blue-border">📄</span> 입금 정보
+                    </div>
+                    <div className="info-row"><span>입금 계좌</span> <span>{bank.account}</span></div>
+                    <div className="info-row"><span>예금주</span> <span className="align-right">{bank.holder}</span></div>
+                    
+                    <div className="info-row">
+                      <span>입금 상태</span>
+                      <span className={`badge-deposit-status ${isCompleted ? "complete" : "incomplete"}`}>
+                        {status}
+                      </span>
+                    </div>
+
+                    <div className="info-row"><span>확정일</span> <span>{item.confirmedAt}</span></div>
+                  </div>
+
+                  <div className="info-panel cyan">
+                    <div className="panel-title"><span className="icon-box blue-border">📞</span> 여행사 연락처</div>
+                    <div className="info-row"><span>여행사명</span> <span className="align-right">{qInfo.agencyName}</span></div>
+                    <div className="info-row"><span>전화번호</span> <span>{bank.contact}</span></div>
+                    <div className="info-row"><span>이메일</span> <span>{bank.email || "-"}</span></div>
+                    <div className="info-row"><span>담당자</span> <span>{bank.manager || "-"}</span></div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </section>
   );
 }
