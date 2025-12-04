@@ -466,3 +466,168 @@
   border-color: #0ea5e9;
 }
 
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .agency-main {
+    max-width: 860px;
+    margin: 24px auto;
+    padding: 0 16px;
+  }
+
+  .agency-card {
+    padding: 18px 20px;
+  }
+
+  .profile-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .profile-left {
+    align-items: center;
+    gap: 12px;
+  }
+
+  .profile-avatar {
+    width: 72px;
+    height: 72px;
+  }
+
+  .profile-right {
+    text-align: left;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Grid becomes 2 columns on medium screens */
+  .request-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* wide card spans full width of the 2-column layout */
+  .request-card-wide {
+    grid-column: 1 / -1;
+  }
+
+  .quote-date-tabs {
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+  }
+
+  .quote-month-filter {
+    flex-wrap: wrap;
+  }
+
+  .month-select {
+    width: calc(50% - 8px);
+  }
+
+  .quote-search-btn {
+    height: 40px;
+  }
+
+  .demand-stats-row {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 520px) {
+  .agency-main {
+    max-width: 100%;
+    margin: 12px auto;
+    padding: 0 12px;
+  }
+
+  .agency-card {
+    padding: 14px 12px;
+    border-radius: 10px;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .profile-row {
+    gap: 10px;
+  }
+
+  .profile-avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .profile-info .agency-name {
+    font-size: 16px;
+  }
+
+  /* Single column list on small screens */
+  .request-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* wide cards simply full width */
+  .request-card-wide {
+    grid-column: auto;
+  }
+
+  .request-card {
+    padding: 12px;
+  }
+
+  .request-title {
+    font-size: 14px;
+  }
+
+  .request-sub {
+    font-size: 12px;
+  }
+
+  .quote-month-filter {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .month-select {
+    width: 100%;
+    height: 40px;
+  }
+
+  .quote-search-btn {
+    width: 100%;
+  }
+
+  .quote-date-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .date-pill {
+    padding: 8px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .date-count {
+    min-width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+
+  .demand-main-btn {
+    padding: 10px 0;
+    font-size: 15px;
+  }
+
+  .quote-total-btn,
+  .demand-date-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
+

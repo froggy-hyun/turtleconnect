@@ -172,3 +172,80 @@
   font-size: 16px;
   font-weight: 600;
 }
+
+/* 반응형: 태블릿/모바일 */
+@media (max-width: 900px) {
+  .agency-main {
+    margin: 16px;
+  }
+
+  /* 프로필 섹션을 세로 스택으로 변경 */
+  .profile-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .profile-left {
+    align-items: center;
+    gap: 12px;
+  }
+
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .profile-right {
+    width: 100%;
+    text-align: left;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .card-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .btn-primary, .btn-secondary, .btn-outline {
+    width: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .agency-main {
+    margin: 12px;
+  }
+
+  .agency-card {
+    padding: 16px;
+  }
+
+  .profile-avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .agency-name { font-size: 16px; }
+  .field-value { font-size: 13px; }
+
+  .card-title { font-size: 18px; }
+
+  .section-desc { font-size: 13px; }
+
+  .btn-primary, .btn-secondary, .btn-outline {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  /* 하단 행을 세로로 쌓아서 버튼이 전체 폭을 쓰게 할 수 있음 */
+  .card-bottom-row {
+    align-items: stretch;
+  }
+
+  .btn-primary { width: 100%; }
+}

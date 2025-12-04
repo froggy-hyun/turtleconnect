@@ -182,3 +182,71 @@
   background: #fff3e0;
   color: #ef6c00;
 }
+
+/* Responsive: summary grid -> 2/1 cols, table scroll on small screens */
+@media (max-width: 900px) {
+  .detail-main {
+    padding: 24px 12px 40px;
+  }
+
+  .detail-summary-section {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .detail-summary-card {
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .detail-main {
+    padding: 16px 10px 30px;
+  }
+
+  .detail-header {
+    gap: 8px;
+  }
+
+  .detail-title {
+    font-size: 20px;
+  }
+
+  .detail-summary-section {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 16px;
+    margin-bottom: 18px;
+  }
+
+  .detail-summary-card {
+    padding: 12px 14px;
+  }
+
+  .detail-tab-section {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  /* Make table horizontally scrollable on small screens */
+  .detail-table-section {
+    padding: 10px 8px 12px;
+    overflow-x: auto;
+  }
+
+  .detail-table {
+    min-width: 720px; /* allow horizontal scroll for columns */
+  }
+
+  .detail-table th,
+  .detail-table td {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .status-pill {
+    min-width: 36px;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}

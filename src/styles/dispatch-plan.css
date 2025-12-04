@@ -364,13 +364,123 @@
 }
 
 /* 반응형 간단 처리 */
+/* Small screens: single-column layout but keep DOM order so
+   sections 1,2,3 (inside .dispatch-left) remain above the summary (.dispatch-right) */
 @media (max-width: 960px) {
   .dispatch-layout {
     grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
   }
 
+  /* make sure aside stays after the left column (DOM order controls flow)
+     avoid negative ordering which would move the summary before the sections */
   .dispatch-right {
-    order: -1;
+    order: 0;
+  }
+
+  .dispatch-main {
+    margin: 20px auto 40px;
+    padding: 0 12px;
+  }
+
+  .dispatch-section {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  /* station grid: keep 2 columns on medium screens, reduce gap */
+  .station-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .station-card {
+    padding: 10px 12px;
+  }
+
+  .time-row {
+    padding: 8px 10px;
+  }
+
+  .time-input {
+    width: 100px;
+  }
+
+  .summary-card {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  /* Mobile: stack everything vertically in logical order (1-2-3-4) */
+  .dispatch-main {
+    margin: 12px auto 24px;
+    padding: 0 10px;
+  }
+
+  .dispatch-section {
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  /* station grid becomes single column */
+  .station-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .station-card {
+    padding: 10px;
+  }
+
+  /* Make time inputs compact on mobile */
+  .time-input {
+    width: 92px;
+    max-width: 92px;
+    height: 32px;
+    padding: 0 8px;
+    font-size: 13px;
+  }
+
+  /* budget inputs full width */
+  /* Keep budget input and unit on the same row on mobile but reduce vertical size */
+  .budget-input-row {
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .budget-input {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 100px;
+    max-width: 200px;
+    height: 34px;
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+
+  .budget-unit {
+    margin-left: 6px;
+    white-space: nowrap;
+    color: #6b7280;
+    font-size: 13px;
+  }
+
+  .summary-card {
+    margin-top: 6px;
+    padding: 12px;
+  }
+
+  .summary-pickup-row {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .summary-submit-btn {
+    padding: 12px 0;
+    font-size: 15px;
   }
 }
 
