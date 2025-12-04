@@ -1,5 +1,6 @@
 // src/components/Header.jsx
 import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import logoTurtle from "../assets/logo-turtle.png";
 import ellipseAvatar from "../assets/Ellipse.png";
 import { useAuth } from "../contexts/AuthContext";
@@ -16,6 +17,7 @@ export default function Header() {
     location.pathname.startsWith("/mypage/quote-detail") ||
     location.pathname.startsWith("/agency-mypage");
   const { isLoggedIn, logout, role } = useAuth();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // 역할에 따라 마이페이지 경로 결정: AGENCY -> /agency-mypage, 그 외(TRAVELER 등) -> /mypage
   // 역할을 대소문자 구분 없이 비교
@@ -30,7 +32,14 @@ export default function Header() {
   }
 
   return (
-    <header className="tc-header">
+    <header className={"tc-header" + (mobileMenuOpen ? " tc-header--menu-open" : "") }>
+      <button
+        className="tc-header__menu-button"
+        aria-label={mobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
+        onClick={() => setMobileMenuOpen((s) => !s)}
+      >
+        ☰
+      </button>
       <div className="tc-header__left">
         <img
           src={logoTurtle}
@@ -83,7 +92,10 @@ export default function Header() {
               src={localStorage.getItem("profile_image") || ellipseAvatar}
               alt="프로필"
               className="tc-header__avatar"
-              onClick={() => navigate(mypagePath)}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                navigate(mypagePath);
+              }}
             />
 
             <button
@@ -124,6 +136,7 @@ export default function Header() {
               className="tc-btn tc-btn--outline"
               onClick={() => {
                 logout();
+                setMobileMenuOpen(false);
                 navigate("/");
               }}
             >

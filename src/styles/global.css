@@ -111,6 +111,11 @@ body {
   border: 2px solid rgba(0,0,0,0.06);
 }
 
+/* 햄버거 메뉴 버튼은 기본적으로 숨김 (데스크톱에서는 보이지 않음) */
+.tc-header__menu-button {
+  display: none;
+}
+
 /* 버튼 기본 */
 .tc-btn {
   height: 48px;
@@ -171,4 +176,96 @@ body {
   .tc-header {
     padding: 0 16px;
   }
+}
+
+/* 모바일 전용 헤더 스타일 */
+@media (max-width: 768px) {
+  .tc-header {
+    height: 64px;
+    padding: 0 12px;
+    align-items: center;
+  }
+
+  /* 메뉴 버튼 (햄버거) */
+  .tc-header__menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  /* 기본적으로 네비게이션 숨김(햄버거 사용) */
+  .tc-header__nav {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid #e6eaee;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 12px;
+    z-index: 20;
+  }
+
+  .tc-header__nav .tc-header__nav-item {
+    width: 100%;
+    text-align: left;
+    padding: 12px 8px;
+    border-radius: 6px;
+  }
+
+  /* 모바일에서 로고 텍스트 숨김: 화면이 좁을 때 타이틀을 안보이게 함 */
+  .tc-header__logo-text {
+    display: none;
+  }
+
+  /* 우측 영역는 아이콘 중심으로 정리 */
+  .tc-header__right {
+    gap: 8px;
+  }
+
+  /* 메뉴가 열렸을 때 nav 보이도록 하는 클래스 */
+  .tc-header--menu-open .tc-header__nav {
+    display: flex;
+  }
+
+  /* 아바타와 버튼 크기 조정 */
+  .tc-header__avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* 모바일: 마이페이지, 로그아웃 텍스트 크기 축소 및 줄바꿈 방지 */
+  .tc-header__right .tc-btn--mypage,
+  .tc-header__right .tc-btn.tc-btn--outline {
+    font-size: 13px;
+    padding: 6px 8px;
+    height: 32px;
+    line-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* 공통 유틸리티 */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.hidden-mobile {
+  display: initial;
+}
+@media (max-width: 768px) {
+  .hidden-mobile { display: none !important; }
 }
