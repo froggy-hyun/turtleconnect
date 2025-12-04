@@ -165,19 +165,6 @@ function DispatchPlan() {
     <div className="dispatch-page">
       <Header />
       <main className="dispatch-main">
-        {/* 상단 브레드크럼 / 탭 */}
-        <div className="dispatch-breadcrumb">
-          <button className="step-tab active">
-            <span className="step-number">1</span>
-            <span>배차 계획 세우기</span>
-          </button>
-          <span className="breadcrumb-separator">›</span>
-          <button className="step-tab">
-            <span className="step-number">2</span>
-            <span>전송한 배차 계획</span>
-          </button>
-        </div>
-
         <div className="dispatch-layout">
           {/* 왼쪽 메인 영역 */}
           <div className="dispatch-left">

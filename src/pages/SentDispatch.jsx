@@ -59,19 +59,6 @@ function SentDispatch() {
     <div className="dispatch-page">
       <Header />
       <main className="dispatch-main">
-        {/* 상단 탭: 2번 탭 활성화 */}
-        <div className="dispatch-breadcrumb">
-          <button className="step-tab">
-            <span className="step-number">1</span>
-            <span>배차 계획 세우기</span>
-          </button>
-          <span className="breadcrumb-separator">›</span>
-          <button className="step-tab active">
-            <span className="step-number">2</span>
-            <span>전송된 배차 계획</span>
-          </button>
-        </div>
-
         {/* 페이지 타이틀 */}
         <h2 className="sent-title">전송된 배차 계획</h2>
         <p className="sent-subtitle">
