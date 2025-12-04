@@ -239,3 +239,83 @@
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .qd-container {
+    max-width: 960px;
+    padding: 28px 16px;
+  }
+
+  .trip-summary-card {
+    padding: 24px;
+  }
+
+  .trip-summary-card h1 {
+    font-size: 24px;
+  }
+
+  .ts-badges {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .ts-icon { width: 44px; height: 44px; font-size: 20px; }
+  .ts-text .value { font-size: 15px; }
+
+  .ts-status-badge { top: 20px; right: 20px; padding: 5px 12px; font-size: 13px; }
+
+  .quote-card { padding: 24px; }
+  .qc-header { gap: 12px; }
+  .agency-avatar { width: 56px; height: 56px; font-size: 20px; }
+  .agency-info h3 { font-size: 18px; }
+
+  .qc-price-box { padding: 18px; gap: 28px; }
+  .price-item .value-main { font-size: 22px; }
+  .price-item .value-sub { font-size: 18px; }
+
+  .message-box { font-size: 14px; }
+
+  .btn-select-quote { padding: 12px; font-size: 16px; }
+}
+
+@media (max-width: 520px) {
+  .qd-container { padding: 16px 12px; }
+
+  .trip-summary-card { padding: 16px; border-radius: 12px; }
+  .trip-summary-card h1 { font-size: 20px; }
+
+  .ts-badges { gap: 16px; flex-direction: column; }
+  .ts-icon { width: 40px; height: 40px; font-size: 18px; }
+  .ts-text .label { font-size: 13px; }
+  .ts-text .value { font-size: 14px; }
+
+  .ts-status-badge { position: static; display: inline-block; margin-top: 12px; }
+
+  .qd-list-header { margin-left: 0; }
+
+  /* Quote card compact */
+  .quote-card { padding: 16px; border-radius: 12px; }
+  .qc-header { gap: 10px; align-items: center; }
+  .agency-avatar { width: 48px; height: 48px; font-size: 18px; }
+  .agency-info h3 { font-size: 16px; }
+
+  /* Price box becomes vertical on very small screens */
+  .qc-price-box { flex-direction: column; gap: 12px; padding: 14px; }
+  .price-item .value-main { font-size: 20px; }
+  .price-item .value-sub { font-size: 16px; }
+
+  .qc-details { gap: 12px; }
+  .detail-row { gap: 10px; }
+
+  .message-box { font-size: 13px; }
+
+  .qc-bank-info { padding: 12px; font-size: 13px; }
+
+  .btn-select-quote { padding: 12px; font-size: 15px; border-radius: 10px; }
+
+  /* Modal smaller */
+  .modal-box { padding: 20px; max-width: 360px; }
+  .modal-box h3 { font-size: 18px; }
+  .modal-actions button { padding: 10px; font-size: 14px; }
+}
