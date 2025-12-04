@@ -24,7 +24,7 @@ public class RouteMatch {
     @JoinColumn(name = "bus_route_id", nullable = false)
     private BusRoute busRoute;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tour_request_id", nullable = false)
     private TourRequest tourRequest;
 
@@ -33,5 +33,12 @@ public class RouteMatch {
 
     @Column(nullable = false)
     private Integer pricePerPerson; // 인당 비용
-
+    @Builder
+    public RouteMatch(TourRequest tourRequest, BusRoute busRoute,
+                      Integer pricePerPerson, Integer totalCost) {
+        this.tourRequest = tourRequest;
+        this.busRoute = busRoute;
+        this.pricePerPerson = pricePerPerson;
+        this.totalCost = totalCost;
+    }
 }
