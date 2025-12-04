@@ -1,5 +1,6 @@
 // src/pages/AgencyMypage.jsx
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import "../styles/quote-manage.css";
 
@@ -57,7 +58,7 @@ function formatDateLabel(dateStr) {
   return `${Number(m)}월 ${Number(d)}일`;
 }
 
-// 선택된 "월" 기준 전체 인원·요청 건수 합계 (상단 총 ○건용)
+// 선택된 "월" 기준 전체 인원·요청 건수 합계
 function getMonthStats(dates) {
   let totalPeople = 0;
   let totalCount = 0;
@@ -80,6 +81,8 @@ function formatMonthLabel(year, month) {
 }
 
 function QuoteManage() {
+  const navigate = useNavigate();
+
   // 기본값: 2025년 11월
   const [year, setYear] = useState("2025");
   const [month, setMonth] = useState("11");
@@ -95,7 +98,9 @@ function QuoteManage() {
   const { totalPeople: monthPeople, totalCount: monthCount } =
     getMonthStats(availableDates);
 
-  const requestsForSelected = selectedDate ? QUOTE_DATA[selectedDate] || [] : [];
+  const requestsForSelected = selectedDate
+    ? QUOTE_DATA[selectedDate] || []
+    : [];
 
   // 일별(선택된 날짜) 기준 합계
   const dayPeople = requestsForSelected.reduce(
@@ -116,6 +121,17 @@ function QuoteManage() {
   const demandDateLabel = selectedDate
     ? formatDateLabel(selectedDate)
     : formatMonthLabel(year, month);
+
+  // Dispatch 페이지로 state 넘기기
+  const handleGoDispatch = () => {
+    if (!selectedDate) return;
+    navigate("/agency-mypage/dispatch", {
+      state: {
+        dateKey: selectedDate,            // "2025-11-23"
+        quotes: requestsForSelected,      // 선택된 일자의 역 리스트
+      },
+    });
+  };
 
   return (
     <div className="agency-page">
@@ -240,7 +256,7 @@ function QuoteManage() {
           )}
         </section>
 
-        {/* 3. 전체 수요 현황 박스 (선택된 '일자' 기준으로 갱신) */}
+        {/* 3. 전체 수요 현황 박스 */}
         <section className="agency-card demand-card">
           <div className="demand-header-row">
             <h2 className="card-title">전체 수요 현황</h2>
@@ -262,7 +278,7 @@ function QuoteManage() {
             </div>
           </div>
 
-          <button className="demand-main-btn">
+          <button className="demand-main-btn" onClick={handleGoDispatch}>
             전체 배차 계획 세우기
           </button>
         </section>

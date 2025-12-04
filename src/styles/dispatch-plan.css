@@ -1,0 +1,417 @@
+/* 전체 레이아웃 */
+.dispatch-page {
+  background-color: #f6f7f8;
+  min-height: 100vh;
+}
+
+.dispatch-main {
+  max-width: 1120px;
+  margin: 40px auto 60px;
+}
+
+/* 상단 브레드크럼/탭 */
+.dispatch-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.step-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  font-size: 13px;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.step-tab.active {
+  background-color: #0ea5e9;
+  color: #ffffff;
+}
+
+.step-tab.active .step-number {
+  background-color: #ffffff;
+  color: #0ea5e9;
+}
+
+.step-number {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.breadcrumb-separator {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+/* 좌우 2단 레이아웃 */
+.dispatch-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) 260px;
+  gap: 24px;
+}
+
+/* 공통 섹션 */
+.dispatch-section {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+  margin-bottom: 16px;
+}
+
+.section-title-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-step-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 2px solid #0ea5e9;
+  color: #0ea5e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.section-step-circle.small {
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.section-sub {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* 지역 블록 */
+.area-block + .area-block {
+  margin-top: 16px;
+}
+
+.area-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.area-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background-color: #0ea5e9;
+}
+
+.area-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* 역 카드 그리드 */
+.station-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.station-card {
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  padding: 12px 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.station-card.selected {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 1px #0ea5e9;
+}
+
+.station-main-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.station-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.station-badge {
+  min-width: 32px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background-color: #0ea5e9;
+  color: #ffffff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.station-sub-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.station-line {
+  white-space: nowrap;
+  margin-right: 8px;
+}
+
+/* 탑승 시간 설정 */
+.time-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.time-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+.time-station {
+  display: flex;
+  flex-direction: column;
+}
+
+.time-station-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.time-station-people {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.time-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.time-input {
+  width: 110px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 0 8px;
+  font-size: 13px;
+}
+
+.time-empty {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* 예상안 메모 */
+.estimate-textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 10px 12px;
+  font-size: 13px;
+  resize: vertical;
+  line-height: 1.4;
+}
+
+/* 오른쪽 요약 카드 */
+.summary-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08);
+}
+
+.summary-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.summary-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.summary-body {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.summary-value {
+  font-weight: 600;
+}
+
+.summary-divider {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+.summary-subtitle {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.summary-subtitle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.summary-pickup-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.summary-pickup-name {
+  font-size: 13px;
+}
+
+.summary-pickup-time {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.summary-empty {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.summary-submit-btn {
+  width: 100%;
+  margin-top: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #0ea5e9;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.summary-toggle {
+  background: none;
+  border: none;
+  color: #0ea5e9;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+.summary-toggle:hover {
+  background-color: rgba(14,165,233,0.08);
+}
+
+/* 반응형 간단 처리 */
+@media (max-width: 960px) {
+  .dispatch-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dispatch-right {
+    order: -1;
+  }
+}
+
+/* 예상 예산 작성 영역 */
+.budget-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.budget-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  gap: 6px;
+}
+
+.budget-input-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.budget-input {
+  flex: 0 0 220px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+.budget-unit {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.budget-help {
+  margin: 0;
+  font-size: 11px;
+  color: #9ca3af;
+}
