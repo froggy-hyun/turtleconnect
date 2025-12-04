@@ -194,7 +194,7 @@ function EstimateGrid() {
                 className={`est-action-btn ${item.status}`}
                 onClick={() => {
                   if (item.btnActive) {
-                    navigate("/quote-detail", { state: { tripInfo: item } });
+                    navigate("/mypage/quote-detail", { state: { tripInfo: item } });
                   }
                 }}
               >

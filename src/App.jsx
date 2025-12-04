@@ -37,7 +37,7 @@ export default function App() {
           }
         />
         <Route
-          path="/estimates"
+          path="/mypage/estimates"
           element={
             <ProtectedRoute allowedRoles={["TRAVELER"]}>
               <EstimatePage />
@@ -45,7 +45,7 @@ export default function App() {
           }
         />
         <Route
-          path="/quote-detail"
+          path="/mypage/quote-detail"
           element={
             <ProtectedRoute allowedRoles={["TRAVELER"]}>
               <QuoteDetailPage />

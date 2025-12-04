@@ -147,7 +147,7 @@ function EstimateListSection() {
           <h2>내 견적 확인</h2>
           <p className="sub-text">신청한 여행 견적 현황입니다.</p>
         </div>
-        <button className="btn-more-link" onClick={() => navigate("/estimates")}>
+        <button className="btn-more-link" onClick={() => navigate("/mypage/estimates")}>
           더 보기 <span className="arrow">›</span>
         </button>
       </div>
@@ -197,7 +197,7 @@ function EstimateListSection() {
                   className={`card-btn ${card.btnActive ? 'active' : 'disabled'}`}
                   onClick={() => {
                     if (card.btnActive) {
-                      navigate("/quote-detail", { state: { tripInfo: card } });
+                      navigate("/mypage/quote-detail", { state: { tripInfo: card } });
                     }
                   }}
                 >

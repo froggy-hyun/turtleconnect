@@ -13,8 +13,7 @@ export default function Header() {
   // 마이페이지 관련 경로들: /agency-mypage 및 /dispatch-plan일 때도 활성화
   const isMyPage =
     location.pathname.startsWith("/mypage") ||
-    location.pathname.startsWith("/estimates") ||
-    location.pathname.startsWith("/quote-detail") ||
+    location.pathname.startsWith("/mypage/quote-detail") ||
     location.pathname.startsWith("/agency-mypage");
   const { isLoggedIn, logout, role } = useAuth();
 
