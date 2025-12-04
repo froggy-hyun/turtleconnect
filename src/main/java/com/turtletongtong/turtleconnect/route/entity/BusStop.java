@@ -2,6 +2,7 @@ package com.turtletongtong.turtleconnect.route.entity;
 
 import com.turtletongtong.turtleconnect.location.entity.Location;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -31,4 +32,14 @@ public class BusStop {
     // ERD 타입이 timestamp라 LocalDateTime 으로 매핑
     @Column(name = "pickup_time", nullable = false)
     private LocalDateTime pickupTime;
+    @Builder
+    private BusStop(BusRoute busRoute,
+                    Location location,
+                    Integer stopOrder,
+                    LocalDateTime pickupTime) {
+        this.busRoute = busRoute;
+        this.location = location;
+        this.stopOrder = stopOrder;
+        this.pickupTime = pickupTime;
+    }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TourRequestService {
 
-    TourRequestResponse create(Long userId, CreateTourRequest request);
+    List<TourRequestResponse> create(Long userId, CreateTourRequest request);
 
     void cancel(Long userId, Long tourRequestId);
 

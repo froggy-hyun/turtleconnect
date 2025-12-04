@@ -19,9 +19,9 @@ public class TourRequestController {
 
     private final TourRequestService tourRequestService;
 
-    @Operation(summary = "투어 예약 요청")
+    @Operation(summary = "투어 예약 요청 (여러 날짜 동시 등록)")
     @PostMapping
-    public TourRequestResponse create(@Valid @RequestBody CreateTourRequest request) {
+    public List<TourRequestResponse> create(@Valid @RequestBody CreateTourRequest request) {
         Long userId = SecurityUtil.getCurrentUserId();
         return tourRequestService.create(userId, request);
     }

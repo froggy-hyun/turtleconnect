@@ -6,5 +6,7 @@ package com.turtletongtong.turtleconnect.user.dto.response;
  */
 public record UserLoginResponse(
         String accessToken,
-        String refreshToken
+        String refreshToken,
+        Long userId,
+        String role
 ) {}

@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -36,38 +37,51 @@ public class TourRequestServiceImpl implements TourRequestService {
     private final BusStopRepository busStopRepository;
 
     @Override
-    public TourRequestResponse create(Long userId, CreateTourRequest request) {
+    @Transactional
+    public List<TourRequestResponse> create(Long userId, CreateTourRequest request) {
+
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ApiException(ErrorCode.USER_NOT_FOUND));
 
         Location location = locationRepository.findByIdAndIsActiveTrue(request.locationId())
                 .orElseThrow(() -> new ApiException(ErrorCode.LOCATION_NOT_FOUND));
 
-        if (request.startDate().isAfter(request.endDate())) {
-            throw new ApiException(ErrorCode.INVALID_DATE_RANGE);
+        if (request.startDates() == null || request.startDates().isEmpty()) {
+            throw new ApiException(ErrorCode.INVALID_INPUT_VALUE);
         }
 
-        TourRequest tourRequest = TourRequest.builder()
-                .user(user)
-                .location(location)
-                .startDate(request.startDate())
-                .endDate(request.endDate())
-                .participantCount(request.participantCount())
-                .status(TourRequestStatus.WAITING)
-                .build();
+        List<TourRequestResponse> responses = new ArrayList<>();
 
-        TourRequest saved = tourRequestRepository.save(tourRequest);
+        for (LocalDate startDate : request.startDates()) {
 
-        return new TourRequestResponse(
-                saved.getId(),
-                saved.getStatus(),
-                saved.getLocation().getId(),
-                saved.getLocation().getName(),
-                saved.getStartDate(),
-                saved.getEndDate(),
-                saved.getParticipantCount(),
-                saved.getCreatedAt()
-        );
+            LocalDate endDate = startDate;   // ⭐ 지금은 출발일과 동일
+
+            TourRequest tourRequest = TourRequest.builder()
+                    .user(user)
+                    .location(location)
+                    .startDate(startDate)
+                    .endDate(endDate)
+                    .participantCount(request.participantCount())
+                    .status(TourRequestStatus.WAITING)
+                    .build();
+
+            TourRequest saved = tourRequestRepository.save(tourRequest);
+
+            responses.add(
+                    new TourRequestResponse(
+                            saved.getId(),
+                            saved.getStatus(),
+                            saved.getLocation().getId(),
+                            saved.getLocation().getName(),
+                            saved.getStartDate(),
+                            saved.getEndDate(),
+                            saved.getParticipantCount(),
+                            saved.getCreatedAt()
+                    )
+            );
+        }
+
+        return responses;
     }
 
     @Override

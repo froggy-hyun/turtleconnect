@@ -1,6 +1,7 @@
 package com.turtletongtong.turtleconnect.tour.entity;
 
 import com.turtletongtong.turtleconnect.location.entity.Location;
+import com.turtletongtong.turtleconnect.route.entity.RouteMatch;
 import com.turtletongtong.turtleconnect.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -62,7 +63,17 @@ public class TourRequest {
         this.participantCount = participantCount;
         this.status = status;
     }
+    public void match() {
+        // WAITING → MATCHED 변경
+        if (this.status == TourRequestStatus.WAITING) {
+            this.status = TourRequestStatus.MATCHED;
+        }
+    }
 
+    public void confirm(RouteMatch match) {
+        // MATCHED → CONFIRMED
+        this.status = TourRequestStatus.CONFIRMED;
+    }
     public void cancel() {
         this.status = TourRequestStatus.CANCELED;
     }

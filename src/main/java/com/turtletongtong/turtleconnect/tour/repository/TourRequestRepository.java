@@ -75,4 +75,16 @@ public interface TourRequestRepository extends JpaRepository<TourRequest, Long> 
             @Param("date") LocalDate date,
             @Param("canceled") TourRequestStatus canceled
     );
+    @Query("""
+        select tr
+        from TourRequest tr
+        where tr.startDate = :date
+          and tr.status = :status
+          and tr.location.id in :locationIds
+        """)
+    List<TourRequest> findAllByDateAndStatusAndLocationIdIn(
+            @Param("date") LocalDate date,
+            @Param("status") TourRequestStatus status,
+            @Param("locationIds") List<Long> locationIds
+    );
 }

@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Schema(description = "투어 예약 생성 요청 DTO")
 public record CreateTourRequest(
@@ -13,13 +14,9 @@ public record CreateTourRequest(
         @NotNull
         Long locationId,
 
-        @Schema(description = "여행 시작 날짜", example = "2025-07-01")
+        @Schema(description = "여행 출발 날짜 리스트", example = "[\"2025-07-01\", \"2025-07-03\"]")
         @NotNull
-        LocalDate startDate,
-
-        @Schema(description = "여행 종료 날짜", example = "2025-07-03")
-        @NotNull
-        LocalDate endDate,
+        List<LocalDate> startDates,
 
         @Schema(description = "참여 인원 수", example = "3")
         @NotNull @Min(1)

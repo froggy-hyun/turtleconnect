@@ -58,7 +58,12 @@ public class AuthServiceImpl implements AuthService {
 
         redisRepository.saveRefreshToken(user.getId(), refreshToken);
 
-        return new UserLoginResponse(accessToken, refreshToken);
+        return new UserLoginResponse(
+                accessToken,
+                refreshToken,
+                user.getId(),
+                user.getRole().name()
+        );
     }
 
     @Override
@@ -78,8 +83,13 @@ public class AuthServiceImpl implements AuthService {
         String newAccess = jwtProvider.createAccessToken(userId, jwtProvider.getRole(refreshToken));
         String newRefresh = jwtProvider.createRefreshToken(userId, jwtProvider.getRole(refreshToken));
 
-        redisRepository.saveRefreshToken(userId, newRefresh);
+        String role = jwtProvider.getRole(refreshToken).name();
 
-        return new UserLoginResponse(newAccess, newRefresh);
+        return new UserLoginResponse(
+                newAccess,
+                newRefresh,
+                userId,
+                role
+        );
     }
 }
