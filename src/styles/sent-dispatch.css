@@ -1,0 +1,212 @@
+/* ===== 전송된 배차 계획 페이지 ===== */
+
+.sent-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 4px 0 4px;
+}
+
+.sent-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 16px;
+}
+
+.sent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sent-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+}
+
+/* 카드 헤더 */
+
+.sent-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.sent-card-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sent-date-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.icon-calendar-outline {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid #0ea5e9;
+  display: inline-block;
+}
+
+.sent-date-text {
+  font-size: 14px;
+}
+
+.sent-status-pill {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background-color: #0ea5e9;
+  color: #ffffff;
+  font-size: 11px;
+}
+
+.sent-time-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.icon-clock {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid #0ea5e9;
+  display: inline-block;
+}
+
+.sent-time-label {
+  font-size: 12px;
+}
+
+.sent-time-value {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.sent-detail-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #0ea5e9;
+  background-color: #ffffff;
+  color: #0ea5e9;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 픽업 구역 */
+
+.sent-section-label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.sent-pickup-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.sent-pickup-card {
+  flex: 1;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 10px 12px;
+  background-color: #f9fafb;
+}
+
+.sent-pickup-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.sent-pickup-order {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background-color: #0ea5e9;
+  color: #ffffff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+}
+
+.sent-pickup-name {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 500;
+  padding-left: 4px;
+}
+
+.sent-pickup-count {
+  font-size: 12px;
+  color: #0ea5e9;
+}
+
+.sent-pickup-time {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.icon-clock-small {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 2px solid #cbd5e1;
+  display: inline-block;
+}
+
+/* 하단 요약 */
+
+.sent-summary-row {
+  display: flex;
+  gap: 24px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background-color: #f9fafb;
+  margin-top: 4px;
+}
+
+.sent-summary-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.icon-location-small,
+.icon-list-small,
+.icon-person-small {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid #e5e7eb;
+  display: inline-block;
+}
+
+.sent-summary-label {
+  font-size: 12px;
+}
+
+.sent-summary-value {
+  font-size: 13px;
+  font-weight: 600;
+}

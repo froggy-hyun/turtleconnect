@@ -1,6 +1,6 @@
 // src/pages/DispatchPlanPage.jsx
 import React, { useState, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import "../styles/dispatch-plan.css";
 
@@ -65,6 +65,7 @@ function formatHeaderDate(dateKey) {
 
 function DispatchPlan() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { dateKey, quotes } = location.state || {};
 
   // 넘어온 quotes로 섹션 구성 (없으면 빈 배열)
@@ -131,15 +132,18 @@ function DispatchPlan() {
   };
 
   const handleSendPlan = () => {
+    // 실제에선 API 호출 등 처리 후 결과 저장
     console.log("배차 계획 전송", {
-      dateKey,
       selectedStations,
       pickupTimes,
       budgetAmount,
       budgetMemo,
     });
-    alert("배차 계획을 전송했습니다. (더미 동작)");
+
+    // 전송 후 전송된 배차 계획 목록 페이지로 이동
+    navigate("/agency-mypage/sent-dispatch");
   };
+
 
   const dayStats = useMemo(() => {
     const people = selectedStations.reduce(

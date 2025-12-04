@@ -78,7 +78,7 @@ function AgencyMypage() {
         <section className="agency-card">
           <div className="password-header">
             <h3 className="section-title">전송된 배차 계획 관리</h3>
-            <button className="btn-outline">
+            <button className="btn-outline" onClick={() => navigate("/agency-mypage/sent-dispatch")}>
               <span className="icon-key" />
               이동
             </button>

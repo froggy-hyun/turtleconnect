@@ -7,6 +7,7 @@ import SignupPage from "./pages/Signup";
 import AgencyMypage from "./pages/AgencyMypage";
 import QuoteManage from "./pages/QuoteManage";
 import DispatchPlan from "./pages/DispatchPlan";
+import SentDispatch from "./pages/SentDispatch";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/agency-mypage" element={<AgencyMypage />} />
         <Route path="/agency-mypage/quotes" element={<QuoteManage />} />
         <Route path="/agency-mypage/dispatch" element={<DispatchPlan />} />
+        <Route path="/agency-mypage/sent-dispatch" element={<SentDispatch />} />
       </Routes>
     </BrowserRouter>
   );
