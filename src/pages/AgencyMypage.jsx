@@ -1,9 +1,11 @@
 // src/pages/AgencyMypage.jsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header"; // 기존 헤더 그대로 사용
 import "../styles/agency-mypage.css";
 
 function AgencyMypage() {
+  const navigate = useNavigate();
   return (
     <div className="agency-page">
       <Header />
@@ -63,7 +65,7 @@ function AgencyMypage() {
         <section className="agency-card">
           <div className="password-header">
             <h3 className="section-title">견적 요청 관리</h3>
-            <button className="btn-outline">
+            <button className="btn-outline" onClick={() => navigate("/agency-mypage/quotes")}>
               <span className="icon-key" />
               이동
             </button>

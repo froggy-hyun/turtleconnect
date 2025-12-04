@@ -5,6 +5,7 @@ import FestivalPage from "./pages/FestivalAndAttractionPage";
 import LoginPage from "./pages/Login"
 import SignupPage from "./pages/Signup";
 import AgencyMypage from "./pages/AgencyMypage";
+import QuoteManage from "./pages/QuoteManage";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/agency-mypage" element={<AgencyMypage />} />
+        <Route path="/agency-mypage/quotes" element={<QuoteManage />} />
       </Routes>
     </BrowserRouter>
   );
