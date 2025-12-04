@@ -1,0 +1,174 @@
+.agency-page {
+  background-color: #f6f7f8;
+  min-height: 100vh;
+}
+
+.agency-main {
+  max-width: 1040px;
+  margin: 40px auto;
+}
+
+/* 카드 공통 */
+.agency-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px 32px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* 프로필 영역 */
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.profile-left {
+  display: flex;
+  gap: 20px;
+}
+
+.profile-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e5e7eb;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.agency-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.field-value {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* 오른쪽 */
+.profile-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.btn-text {
+  font-size: 13px;
+  color: #9ca3af;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.email-block {
+  margin-top: 4px;
+}
+
+/* 구분선 */
+.card-divider {
+  margin: 24px 0 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* 하단 비밀번호 변경 */
+.card-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title-small {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.section-desc {
+  font-size: 13px;
+  margin-top: 4px;
+  color: #6b7280;
+}
+
+/* 버튼 */
+.btn-primary {
+  background: #0ea5e9;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: #0ea5e9;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-outline {
+  border: 1px solid #0ea5e9;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: white;
+  color: #0ea5e9;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon-key {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+/* 아래 비밀번호 카드 */
+.password-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}

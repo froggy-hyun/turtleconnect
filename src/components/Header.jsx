@@ -10,6 +10,12 @@ export default function Header() {
 
   const isHome = location.pathname === "/";
   const isFestival = location.pathname.startsWith("/festivals");
+  // 마이페이지 관련 경로들: /agency-mypage 및 /dispatch-plan일 때도 활성화
+  const isMyPage =
+    location.pathname.startsWith("/usermypage") ||
+    location.pathname.startsWith("/agency-mypage") ||
+    location.pathname.startsWith("/dispatch-plan") ||
+    location.pathname.startsWith("/sentplans");
   const { isLoggedIn, logout } = useAuth();
 
   return (
@@ -55,7 +61,12 @@ export default function Header() {
           </>
         ) : (
           <>
-            <button className="tc-btn tc-btn--mypage" onClick={() => navigate("/usermypage")}>마이페이지</button>
+            <button 
+              className={"tc-btn tc-btn--mypage" + (isMyPage ? " tc-header__nav-item--active" : "")}
+              onClick={() => navigate("/usermypage")}
+            >
+                마이페이지
+            </button>
 
             <img
               src={localStorage.getItem("profile_image") || ellipseAvatar}
@@ -75,6 +86,40 @@ export default function Header() {
             </button>
           </>
         )}
+
+      {/* <div className={"tc-header__right" + (isLoggedIn ? " tc-header__right--logged" : "") }>
+        {!isLoggedIn ? (
+          <>
+            <button className="tc-btn tc-btn--outline" onClick={() => navigate("/login")}>로그인</button>
+            <button className="tc-btn tc-btn--primary" onClick={() => navigate("/signup")}>회원가입</button>
+          </>
+        ) : (
+          <>
+            <button
+              className={"tc-btn tc-btn--mypage" + (isMyPage ? " tc-header__nav-item--active" : "")}
+              onClick={() => navigate("/agency-mypage")}
+            >
+              마이페이지
+            </button>
+
+            <img
+              src={localStorage.getItem("profile_image") || ellipseAvatar}
+              alt="프로필"
+              className="tc-header__avatar"
+              onClick={() => navigate("/agency-mypage")}
+            />
+
+            <button
+              className="tc-btn tc-btn--outline"
+              onClick={() => {
+                logout();
+                navigate("/");
+              }}
+            >
+              로그아웃
+            </button>
+          </>
+        )} */}
       </div>
     </header>
   );

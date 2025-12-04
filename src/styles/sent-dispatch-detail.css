@@ -1,0 +1,184 @@
+/* src/styles/sent-dispatch-detail.css */
+
+.detail-main {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 32px 0 80px;
+}
+
+/* 상단 타이틀 영역 */
+.detail-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 14px;
+  color: #80868b;
+  cursor: pointer;
+}
+
+.detail-back-icon {
+  font-size: 16px;
+}
+
+.detail-back-text {
+  text-decoration: underline;
+}
+
+.detail-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: #202124;
+}
+
+.detail-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #5f6368;
+}
+
+/* 요약 카드 영역 */
+.detail-summary-section {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
+.detail-summary-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 8px rgba(60, 64, 67, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-summary-label {
+  font-size: 13px;
+  color: #5f6368;
+}
+
+.detail-summary-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #202124;
+}
+
+/* 탭 버튼 영역 */
+.detail-tab-section {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 4px;
+  box-shadow: 0 1px 4px rgba(60, 64, 67, 0.08);
+  margin-bottom: 16px;
+}
+
+.detail-tab-btn {
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #5f6368;
+}
+
+.detail-tab-btn.active {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.detail-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: #ffffff;
+}
+
+/* 테이블 영역 */
+.detail-table-section {
+  margin-top: 8px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(60, 64, 67, 0.08);
+  padding: 12px 20px 20px;
+}
+
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.detail-table thead tr {
+  height: 40px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.detail-table th {
+  text-align: left;
+  padding: 8px 4px;
+  color: #5f6368;
+  font-weight: 500;
+}
+
+.detail-table td {
+  padding: 10px 4px;
+  border-bottom: 1px solid #f1f3f4;
+  color: #202124;
+}
+
+.detail-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.detail-empty {
+  text-align: center;
+  padding: 20px 0;
+  color: #9aa0a6;
+}
+
+/* 상태 pill */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.status-confirmed {
+  background: #e0f2f1;
+  color: #00796b;
+}
+
+.status-pending {
+  background: #fff3e0;
+  color: #ef6c00;
+}

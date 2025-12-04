@@ -144,6 +144,12 @@ body {
   cursor: pointer;
 }
 
+/* 마이페이지 버튼이 활성화 되었을 때(같은 active 클래스가 적용됨) 색상이 우선 적용되도록
+   .tc-btn--mypage와 함께 사용되는 경우를 명시적으로 처리합니다. */
+.tc-btn--mypage.tc-header__nav-item--active {
+  color: #009ab3;
+}
+
 /* 공통 섹션 타이틀/캡션 */
 .tc-section-title {
   font-size: 20px;
