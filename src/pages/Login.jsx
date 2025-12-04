@@ -50,13 +50,13 @@ function LoginPage() {
         throw new Error("서버에서 토큰 정보를 받지 못했습니다.");
       }
 
-      const { accessToken, refreshToken } = data;
+      const { accessToken, refreshToken, userId, role } = data;
 
-      // ✅ AuthContext에 토큰 전달 (내부에서 localStorage에 저장)
-      login({ accessToken, refreshToken });
+      // ✅ AuthContext에 로그인 정보 전달 (localStorage 저장 포함)
+      login({ accessToken, refreshToken, userId, role });
 
-      // 로그인 성공 시 메인 페이지로 이동
-      navigate("/");
+      if (role == "TRAVELER") navigate("/");
+      if (role == "AGENCY" || role == "ADMIN") navigate("/festivals");
 
     } catch (err) {
       const message =

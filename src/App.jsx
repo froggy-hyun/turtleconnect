@@ -15,6 +15,8 @@ import DispatchPlan from "./pages/agency/DispatchPlan";
 import SentDispatch from "./pages/agency/SentDispatch";
 import SentDispatchDetail from "./pages/agency/SentDispatchDetail";
 
+import ProtectedRoute from "./components/ProtectedRoute";
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -25,17 +27,72 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
 
-        <Route path="/usermypage" element={<UserMyPage />} />
-        <Route path="/estimates" element={<EstimatePage />} />
-        <Route path="/quote-detail" element={<QuoteDetailPage />} />
+        {/* user pages: TRAVELER(또는 일반 사용자)만 접근 허용 */}
+        <Route
+          path="/usermypage"
+          element={
+            <ProtectedRoute allowedRoles={["TRAVELER"]}>
+              <UserMyPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/estimates"
+          element={
+            <ProtectedRoute allowedRoles={["TRAVELER"]}>
+              <EstimatePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/quote-detail"
+          element={
+            <ProtectedRoute allowedRoles={["TRAVELER"]}>
+              <QuoteDetailPage />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/agency-mypage" element={<AgencyMypage />} />
-        <Route path="/agency-mypage/quotes" element={<QuoteManage />} />
-        <Route path="/agency-mypage/dispatch" element={<DispatchPlan />} />
-        <Route path="/agency-mypage/sent-dispatch" element={<SentDispatch />} />
+        {/* agency pages: AGENCY만 접근 허용 */}
+        <Route
+          path="/agency-mypage"
+          element={
+            <ProtectedRoute allowedRoles={["AGENCY"]}>
+              <AgencyMypage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/agency-mypage/quotes"
+          element={
+            <ProtectedRoute allowedRoles={["AGENCY"]}>
+              <QuoteManage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/agency-mypage/dispatch"
+          element={
+            <ProtectedRoute allowedRoles={["AGENCY"]}>
+              <DispatchPlan />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/agency-mypage/sent-dispatch"
+          element={
+            <ProtectedRoute allowedRoles={["AGENCY"]}>
+              <SentDispatch />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/agency-mypage/sent-dispatch/:planId"
-          element={<SentDispatchDetail />}
+          element={
+            <ProtectedRoute allowedRoles={["AGENCY"]}>
+              <SentDispatchDetail />
+            </ProtectedRoute>
+          }
         />
       </Routes>
     </BrowserRouter>
