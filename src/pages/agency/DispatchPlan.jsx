@@ -1,8 +1,8 @@
-// src/pages/DispatchPlanPage.jsx
+// src/pages/agency/DispatchPlanPage.jsx
 import React, { useState, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import "../styles/dispatch-plan.css";
+import Header from "../../components/Header";
+import "../../styles/dispatch-plan.css";
 
 // QUOTE 데이터(AgencyMypage에서 넘어온 quotes)를
 // 서울권 / 경기권 섹션으로 나누는 함수

@@ -4,11 +4,11 @@ import TurtleConnectMain from "./pages/MainAndBooking";
 import FestivalPage from "./pages/FestivalAndAttractionPage";
 import LoginPage from "./pages/Login"
 import SignupPage from "./pages/Signup";
-import AgencyMypage from "./pages/AgencyMypage";
-import QuoteManage from "./pages/QuoteManage";
-import DispatchPlan from "./pages/DispatchPlan";
-import SentDispatch from "./pages/SentDispatch";
-import SentDispatchDetail from "./pages/SentDispatchDetail";
+import AgencyMypage from "./pages/agency/AgencyMypage";
+import QuoteManage from "./pages/agency/QuoteManage";
+import DispatchPlan from "./pages/agency/DispatchPlan";
+import SentDispatch from "./pages/agency/SentDispatch";
+import SentDispatchDetail from "./pages/agency/SentDispatchDetail";
 
 export default function App() {
   return (

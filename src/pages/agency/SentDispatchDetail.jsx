@@ -1,8 +1,8 @@
-// src/pages/SentDispatchDetail.jsx
+// src/pages/agency/SentDispatchDetail.jsx
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Header from "../components/Header";
-import "../styles/sent-dispatch-detail.css";
+import Header from "../../components/Header";
+import "../../styles/sent-dispatch-detail.css";
 
 // 더미 상세 데이터
 const SENT_PLAN_DETAILS = {

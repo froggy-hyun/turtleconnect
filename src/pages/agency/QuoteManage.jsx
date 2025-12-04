@@ -1,8 +1,8 @@
-// src/pages/AgencyMypage.jsx
+// src/pages/agency/AgencyMypage.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import "../styles/quote-manage.css";
+import Header from "../../components/Header";
+import "../../styles/quote-manage.css";
 
 // 월별 / 일별 더미 데이터
 const QUOTE_DATA = {

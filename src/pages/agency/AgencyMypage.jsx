@@ -1,8 +1,8 @@
-// src/pages/AgencyMypage.jsx
+// src/pages/agency/AgencyMypage.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header"; // 기존 헤더 그대로 사용
-import "../styles/agency-mypage.css";
+import Header from "../../components/Header"; // 기존 헤더 그대로 사용
+import "../../styles/agency-mypage.css";
 
 function AgencyMypage() {
   const navigate = useNavigate();

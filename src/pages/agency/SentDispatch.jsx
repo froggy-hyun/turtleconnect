@@ -1,8 +1,8 @@
-// src/pages/SentDispatch.jsx
+// src/pages/agency/SentDispatch.jsx
 import React from "react";
-import Header from "../components/Header";
-import "../styles/sent-dispatch.css";
-import { useNavigate } from "react-router-dom"; // 추가
+import { useNavigate } from "react-router-dom";
+import Header from "../../components/Header";
+import "../../styles/sent-dispatch.css";
 
 // 더미 데이터: 전송된 배차 계획 목록
 const SENT_PLANS = [
