@@ -384,4 +384,15 @@
   .tc-festival-card__image-wrap {
     height: 240px;
   }
+
+  /* 모바일에서 관광지 탭은 1열로 쌓이도록 변경 (4x1) */
+  .tc-festival__list--attraction {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* 카드 내부 패딩/타이포 조정 (모바일에서 더 컴팩트하게) */
+  .tc-festival-card__body {
+    padding: 20px;
+  }
 }
