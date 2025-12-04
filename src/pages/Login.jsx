@@ -61,9 +61,17 @@ function LoginPage() {
     } catch (err) {
       const message =
         err.response?.data?.error ||
-        err.message ||
-        "로그인에 실패했습니다.";
+        err.message;
+        
       setErrorMsg(message);
+      // 사용자에게 즉시 알림
+      alert("로그인에 실패했습니다.");
+      try {
+        window.location.reload();
+      } catch (reloadErr) {
+        // reload 실패해도 무시
+        console.error("자동 새로고침 실패:", reloadErr);
+      }
     } finally {
       setLoading(false);
     }
