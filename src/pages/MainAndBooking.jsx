@@ -10,10 +10,20 @@ import userImg from "../assets/Ellipse.png";
 const LOCATION_MAP = {
   "강남역": 1,
   "서울역": 2,
-  "정왕역": 3,
-  "시흥시청": 4
+  "신도림역": 3,
+  "홍대입구역": 4,
+  "합정역": 6,
+  "수원역": 7,
+  "안산 중앙역": 8,
+  "부천종합운동장역": 9,
+  "인천대입구역": 10
 };
-const PICKUP_OPTIONS = ["강남역", "서울역", "정왕역", "시흥시청"];
+
+const PICKUP_OPTIONS = [
+  "강남역", "서울역", "신도림역", "홍대입구역", 
+  "잠실역", "합정역", "수원역", "안산 중앙역", 
+  "부천종합운동장역", "인천대입구역"
+];
 
 export default function TurtleConnectMain() {
   return (

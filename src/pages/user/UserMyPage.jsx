@@ -9,8 +9,14 @@ import "../../styles/UserMyPage.css";
 const LOCATION_ID_MAP = {
   1: "강남역",
   2: "서울역",
-  3: "정왕역",
-  4: "시흥시청"
+  3: "신도림역", // DB ID 3: 신도림역
+  4: "홍대입구역", // DB ID 4: 홍대입구역
+  5: "잠실역",
+  6: "합정역",
+  7: "수원역",
+  8: "안산 중앙역",
+  9: "부천종합운동장역",
+  10: "인천대입구역"
 };
 
 export default function UserMyPage() {
