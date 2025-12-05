@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
-import LoginImage from "../assets/login_img.png";
+import LoginImage from "../assets/login_img_.png";
 import logoTurtle from "../assets/login-logo.svg";
 import api from "../api/axiosConfig";
 import { useAuth } from "../contexts/AuthContext";
