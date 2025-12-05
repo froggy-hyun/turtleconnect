@@ -65,10 +65,10 @@
 
 /* 로고 영역 */
 .login-logo {
-  margin-top: 80px;
+  /* margin-top: 80px; */
   margin-bottom: 40px;
   width: 220px;
-  height: 120px; /* 로고 자리 확보용, 필요에 따라 수정 */
+  /* height: 120px; 로고 자리 확보용, 필요에 따라 수정 */
   display: flex;
   align-items: center;
   justify-content: center;
