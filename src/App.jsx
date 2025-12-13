@@ -87,7 +87,7 @@ export default function App() {
           }
         />
         <Route
-          path="/agency-mypage/sent-dispatch/:planId"
+          path="/agency-mypage/sent-dispatch/:routeId"
           element={
             <ProtectedRoute allowedRoles={["AGENCY"]}>
               <SentDispatchDetail />
