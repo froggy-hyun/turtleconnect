@@ -3,12 +3,16 @@ package com.turtletongtong.turtleconnect.route.controller;
 import com.turtletongtong.turtleconnect.global.security.SecurityUtil;
 import com.turtletongtong.turtleconnect.route.dto.request.CreateRoutePlanRequest;
 import com.turtletongtong.turtleconnect.route.dto.response.RoutePlanResponse;
+import com.turtletongtong.turtleconnect.route.dto.response.RoutePlanSummaryResponse;
 import com.turtletongtong.turtleconnect.route.service.RoutePlanService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/agency/routes")
@@ -33,5 +37,36 @@ public class AgencyRoutePlanController {
 
         Long agencyId = SecurityUtil.getCurrentUserId();
         return routePlanService.createRoutePlan(agencyId, request);
+    }
+
+    @Operation(
+            summary = "배차 계획 리스트 조회",
+            description = """
+                    여행사가 생성한 배차 계획 목록을 조회합니다.
+                    (BusRoute에 date 컬럼이 없으므로, 첫 정차역 pickupTime의 날짜를 배차 날짜로 사용합니다.)
+                    - date 파라미터를 주면 해당 날짜만 필터링합니다. (옵션)
+                    """
+    )
+    @GetMapping
+    public List<RoutePlanSummaryResponse> getRoutePlans(
+            @RequestParam(required = false) LocalDate date
+    )
+    {
+        Long agencyId = SecurityUtil.getCurrentUserId();
+        return routePlanService.getRoutePlans(agencyId, date);
+    }
+
+    @Operation(
+            summary = "배차 계획 상세 조회",
+            description = """
+                    routeId로 배차 계획 상세(정차역 포함)를 조회합니다.
+                    (BusRoute에 date 컬럼이 없으므로, 첫 정차역 pickupTime의 날짜를 배차 날짜로 사용합니다.)
+                    """
+    )
+    @GetMapping("/{routeId}")
+    public RoutePlanResponse getRoutePlan(@PathVariable Long routeId)
+    {
+        Long agencyId = SecurityUtil.getCurrentUserId();
+        return routePlanService.getRoutePlan(agencyId, routeId);
     }
 }
