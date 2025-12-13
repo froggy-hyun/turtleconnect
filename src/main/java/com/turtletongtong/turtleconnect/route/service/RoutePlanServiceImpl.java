@@ -217,6 +217,7 @@ public class RoutePlanServiceImpl implements RoutePlanService
                     return new RoutePlanSummaryResponse(
                             route.getId(),
                             date,
+                            route.getDescription(),
                             route.getCapacity(),
                             route.getTotalCost(),
                             route.getPricePerPerson(),

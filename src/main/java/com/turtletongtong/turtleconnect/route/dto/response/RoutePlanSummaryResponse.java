@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 public record RoutePlanSummaryResponse(
         Long routeId,
         LocalDate date,
+        String description,
         Integer totalPassengerCount,
         Integer totalPrice,
         Integer pricePerPerson,
