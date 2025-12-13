@@ -184,9 +184,31 @@ const handleSendPlan = async () => {
 
   try {
     setSending(true);
-    await api.post(SEND_PLAN_API, body);
+    const res = await api.post(SEND_PLAN_API, body);
+    // console.log(res)
+    const createdId = res.data.data.routeId;
+    // console.log(createdId);
 
-    navigate("/agency-mypage/sent-dispatch");
+    // 상세 페이지에 방금 전송한 데이터를 그대로 넘김
+    navigate( 
+      createdId ? `/agency-mypage/sent-dispatch/${createdId}` : "/agency-mypage/sent-dispatch/new",
+      {
+        state: {
+          justSentPlan: {
+            // 헤더 정보
+            date: body.date,
+            totalPassengerCount: body.totalPassengerCount,
+            totalCost: body.totalCost,
+            note: body.note,
+            // 픽업 목록 그대로
+            stops: body.stops,
+            // UI에 필요한 추가 정보(선택 역 원본)
+            selectedStations,
+            pickupTimes,
+          },
+        },
+      }
+    );
   } catch (e) {
     setSendError("배차 계획 전송에 실패했습니다.");
   } finally {
