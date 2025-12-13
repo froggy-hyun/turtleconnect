@@ -5,6 +5,7 @@ import { createTourRequest } from "../api/tourApi";
 import "../styles/main-and-booking.css";
 import Header from "../components/Header";
 import banner from "../assets/banner.png"
+import Footer from "../components/Footer";
 import userImg from "../assets/Ellipse.png";
 
 const LOCATION_MAP = {
@@ -34,6 +35,7 @@ export default function TurtleConnectMain() {
         <Hero />
         <BookingSection />
       </main>
+      <Footer />
     </div>
   );
 }

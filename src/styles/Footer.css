@@ -1,0 +1,83 @@
+.tc-footer {
+  background: linear-gradient(135deg, #0b1220, #0f172a);
+  color: #e5e7eb;
+  padding: 36px 16px;
+  font-size: 14px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+/* ===== 로고 영역 ===== */
+.footer-logos {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-logo {
+  height: 42px;
+  object-fit: contain;
+  /* ✅ 컬러 유지 */
+  filter: none;
+}
+
+/* 가로형 로고 (시흥 텍스트) */
+.footer-logo.wide {
+  height: 38px;
+}
+
+/* 캐릭터는 강조 */
+.footer-logo.character {
+  height: 52px;
+}
+
+/* 구분선 */
+.divider {
+  width: 1px;
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ===== 텍스트 ===== */
+.footer-text {
+  text-align: center;
+  line-height: 1.7;
+}
+
+.footer-text p {
+  margin: 0;
+}
+
+.footer-text .brand {
+  margin-top: 6px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+}
+
+.footer-text .copyright {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 480px) {
+  .footer-logo {
+    height: 36px;
+  }
+
+  .footer-logo.character {
+    height: 44px;
+  }
+}

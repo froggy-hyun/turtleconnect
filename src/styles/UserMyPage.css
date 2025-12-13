@@ -2,13 +2,13 @@
 .mypage-wrapper {
   background-color: #F6F7F8;
   min-height: 100vh;
-  padding-bottom: 80px;
 }
 
 .mypage-container {
   max-width: 1280px; /* 전체 폭 고정 (원하는 경우 100%로 변경 가능) */
   margin: 0 auto;
   padding: 40px 20px;
+  padding-bottom: 80px;
   display: flex;
   flex-direction: column;
   gap: 24px;

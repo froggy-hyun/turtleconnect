@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import { getMyRequests, cancelTourRequest } from "../../api/tourApi"; // API 가져오기
 import "../../styles/EstimatePage.css";
 import waveParkImage from '../../assets/dummy/wave_park.jpg';
@@ -29,6 +30,7 @@ export default function EstimatePage() {
         {/* 그리드 컴포넌트에 로직 포함 */}
         <EstimateGrid />
       </main>
+      <Footer />
     </div>
   );
 }

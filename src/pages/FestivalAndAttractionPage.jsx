@@ -2,6 +2,7 @@
 import { useState } from "react";
 import "../styles/festival.css";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import FestivalModal from "../components/FestivalModal";
 import AttractionModal from "../components/AttractionModal";
 
@@ -152,6 +153,7 @@ export default function FestivalPage() {
           place={selectedPlace}
         />
       </main>
+      <Footer />
     </div>
   );
 }

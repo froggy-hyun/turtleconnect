@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getMyRequests, cancelTourRequest } from "../../api/tourApi";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import waveParkImage from '../../assets/dummy/wave_park.jpg';
 import ellipseAvatar from "../../assets/Ellipse.png";
 import "../../styles/UserMyPage.css";
@@ -48,6 +49,7 @@ export default function UserMyPage() {
         {/* 5. 확정된 여행 (상세 정보) */}
         <ConfirmedTripSection />
       </main>
+      <Footer />
     </div>
   );
 }
