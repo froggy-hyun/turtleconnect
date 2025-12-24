@@ -1,6 +1,15 @@
-# turtleconnect
-거북섬커넥트
+# 거북섬커넥트 - 2025 2학기 CE(시흥시 지역사회참여교과) 우수작
 
+📖 내용
+- 2025년 2학기 웹서비스프로그래밍 CE과목 우수작 '우린거북섬 모두가치통통팀'(최성현[팀장/PM/DevOps], 김준권[FE], 송수석[문서작업], 이기용[FE], 채영진[BE])
+
+🙋‍♂️ 역할
+- 리딩, PM, CI/CD, 백엔드 수정
+
+### 🎯 결과 및 성과
+- 2025 지역사회참여교과 우수작 원장상
+- 2025 지역사회참여교과 수강후기 공모전 대상
+  
 ![웹서프최종_거북섬커넥트_page-0001](https://github.com/user-attachments/assets/0a2b9fc5-f2bf-40b7-9bf7-183713fa999f)
 ![웹서프최종_거북섬커넥트_page-0002](https://github.com/user-attachments/assets/b1dd7262-3fce-4371-bc76-2ff4d3b025e2)
 ![웹서프최종_거북섬커넥트_page-0003](https://github.com/user-attachments/assets/71642ffd-6818-42c3-9de9-05e8b0f17048)
