@@ -1,0 +1,256 @@
+.attraction-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.attraction-modal-content {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  width: 92%;
+  max-width: 920px;
+  max-height: 92vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.attraction-modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.attraction-modal-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.attraction-modal-body {
+  padding: 22px 26px;
+}
+
+.attraction-modal-close-button {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  background: #f1f3f5;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 22px;
+  font-weight: 300;
+  color: #868e96;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10001; /* fixed above overlay content */
+}
+
+.attraction-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* keep title and pill together on the left */
+  gap: 12px;
+  /* leave room on the right for the close button so the pill won't overlap it */
+  padding-right: 56px;
+}
+
+.attraction-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.attraction-pill {
+  background: #e8f7f7;
+  color: #195c5c;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 13px;
+  margin-left: 8px; /* sit right next to the title */
+  flex: none;
+}
+
+.attraction-image-wrap {
+  margin-top: 14px;
+}
+
+.attraction-main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.attraction-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  color: #2b3a3a;
+}
+
+.star {
+  font-size: 20px;
+  color: #ffb400;
+}
+
+.rating-score {
+  font-weight: 700;
+}
+
+.rating-count {
+  color: #6c757d;
+}
+
+.attraction-description {
+  margin-top: 12px;
+  color: #495057;
+  line-height: 1.7;
+}
+
+.attraction-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.attraction-info-card {
+  background: #f7fbfb;
+  border: 1px solid #e6f0ef;
+  padding: 14px;
+  border-radius: 12px;
+}
+
+.attraction-info-card-title {
+  font-size: 12px;
+  color: #6c757d;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.festival-info-card-title img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.attraction-info-card-body {
+  font-size: 14px;
+  color: #2b3a3a;
+}
+
+.attraction-special {
+  margin-top: 16px;
+  background: #f1f6ff;
+  border: 1px solid #dbe9ff;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.special-title {
+  font-weight: 700;
+  color: #154e8a;
+}
+
+.special-body {
+  color: #154e8a;
+}
+
+.attraction-section {
+  margin-top: 18px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #868e96;
+  margin-bottom: 12px;
+}
+
+.feature-chips {
+  display: flex;
+  gap: 12px;
+}
+
+.feature-chip {
+  background: #ecfbf9;
+  color: #0b655f;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.attraction-divider {
+  border: none;
+  border-top: 1px solid #eef3f5;
+  margin: 18px 0;
+}
+
+.review-form {
+  margin-top: 12px;
+}
+
+.star-select {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.star-btn {
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #ffc107;
+  cursor: pointer;
+}
+
+.review-textarea {
+  width: 100%;
+  min-height: 100px;
+  border-radius: 10px;
+  border: 1px solid #e9eef0;
+  padding: 12px;
+  resize: vertical;
+  margin-bottom: 12px;
+}
+
+.review-submit {
+  background: #008b94;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  width: 100%;
+}
+
+.no-reviews {
+  margin-top: 18px;
+  color: #6c757d;
+  text-align: center;
+  padding: 18px 0 30px 0;
+}
+
+@media (max-width: 768px) {
+  .attraction-modal-content {
+    width: 94%;
+    max-width: 640px;
+  }
+}

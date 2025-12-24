@@ -1,0 +1,272 @@
+/* src/styles/global.css */
+
+/* 전역 기본 설정 */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR",
+    system-ui, sans-serif;
+  color: #212121;
+  background-color: #f6f7f8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f6f7f8;
+}
+
+.tc-root {
+  min-height: 100vh;
+  background-color: #f6f7f8;
+}
+
+/* 공통 메인 레이아웃 */
+.tc-main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px 80px 80px;
+}
+
+/* 헤더 공통 */
+.tc-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+  border-bottom: 1px solid #dde1e6;
+  background-color: #ffffff;
+}
+
+.tc-header__left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+}
+
+.tc-header__logo-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.tc-header__logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tc-header__logo-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #697077;
+}
+
+.tc-header__logo-sub {
+  font-size: 12px;
+  color: #697077;
+}
+
+.tc-header__nav {
+  display: flex;
+  gap: 16px;
+}
+
+.tc-header__nav-item {
+  border: none;
+  background: none;
+  padding: 12px 8px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #21272a;
+}
+
+.tc-header__nav-item--active {
+  color: #009ab3;
+}
+
+.tc-header__right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+/* Logged-in header layout */
+.tc-header__right--logged {
+  align-items: center;
+  gap: 12px;
+}
+
+.tc-header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid rgba(0,0,0,0.06);
+}
+
+/* 햄버거 메뉴 버튼은 기본적으로 숨김 (데스크톱에서는 보이지 않음) */
+.tc-header__menu-button {
+  display: none;
+}
+
+/* 버튼 기본 */
+.tc-btn {
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.tc-btn--outline {
+  background-color: #ffffff;
+  color: #0f62fe;
+  border-color: #0f62fe;
+}
+
+.tc-btn--primary {
+  background-color: #009ab3;
+  border-color: #0f62fe;
+  color: #ffffff;
+}
+
+.tc-btn--mypage {
+  background: none;
+  border: none;
+  color: #697077;
+  padding: 8px 0;
+  height: auto;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 마이페이지 버튼이 활성화 되었을 때(같은 active 클래스가 적용됨) 색상이 우선 적용되도록
+   .tc-btn--mypage와 함께 사용되는 경우를 명시적으로 처리합니다. */
+.tc-btn--mypage.tc-header__nav-item--active {
+  color: #009ab3;
+}
+
+/* 공통 섹션 타이틀/캡션 */
+.tc-section-title {
+  font-size: 20px;
+  margin: 0 0 4px;
+}
+
+.tc-section-caption {
+  font-size: 12px;
+  color: #555;
+  margin: 0 0 12px;
+}
+
+/* 공통 반응형 */
+@media (max-width: 1024px) {
+  .tc-main {
+    padding: 24px 16px 40px;
+  }
+
+  .tc-header {
+    padding: 0 16px;
+  }
+}
+
+/* 모바일 전용 헤더 스타일 */
+@media (max-width: 768px) {
+  .tc-header {
+    height: 64px;
+    padding: 0 12px;
+    align-items: center;
+  }
+
+  /* 메뉴 버튼 (햄버거) */
+  .tc-header__menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  /* 기본적으로 네비게이션 숨김(햄버거 사용) */
+  .tc-header__nav {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid #e6eaee;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 12px;
+    z-index: 20;
+  }
+
+  .tc-header__nav .tc-header__nav-item {
+    width: 100%;
+    text-align: left;
+    padding: 12px 8px;
+    border-radius: 6px;
+  }
+
+  /* 모바일에서 로고 텍스트 숨김: 화면이 좁을 때 타이틀을 안보이게 함 */
+  .tc-header__logo-text {
+    display: none;
+  }
+
+  /* 우측 영역는 아이콘 중심으로 정리 */
+  .tc-header__right {
+    gap: 8px;
+  }
+
+  /* 메뉴가 열렸을 때 nav 보이도록 하는 클래스 */
+  .tc-header--menu-open .tc-header__nav {
+    display: flex;
+  }
+
+  /* 아바타와 버튼 크기 조정 */
+  .tc-header__avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* 모바일: 마이페이지, 로그인, 회원가입 버튼 텍스트 크기 축소 및 줄바꿈 방지 */
+  .tc-header__right .tc-btn--mypage,
+  .tc-header__right .tc-btn.tc-btn--outline,
+  .tc-header__right .tc-btn.tc-btn--primary {
+    font-size: 13px;
+    padding: 6px 8px;
+    height: 32px;
+    line-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* 공통 유틸리티 */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.hidden-mobile {
+  display: initial;
+}
+@media (max-width: 768px) {
+  .hidden-mobile { display: none !important; }
+}

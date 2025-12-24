@@ -1,0 +1,265 @@
+/* Festival modal (namespaced to avoid collisions) */
+.festival-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.festival-modal-content {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 920px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.festival-modal-body {
+    padding: 24px 32px;
+}
+
+.festival-modal-body--container {
+  padding: 20px 20px 28px 20px;
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.festival-modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.festival-modal-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+.festival-modal-close-button {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  background: #f1f3f5;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 22px;
+  font-weight: 300;
+  color: #868e96;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+  z-index: 10001; /* ensure fixed above other content */
+}
+
+.festival-modal-close-button:hover {
+  background-color: #e9ecef;
+}
+
+.festival-modal-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+  line-height: 1.4;
+  padding-right: 40px; /* space for close button */
+}
+
+.festival-modal-image-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.festival-modal-main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.festival-modal-divider {
+    border: none;
+    border-top: 1px solid #e9ecef;
+    margin: 20px 0;
+}
+
+.festival-modal-section {
+    margin: 20px 0;
+}
+
+.festival-modal-section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #868e96;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.festival-modal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.festival-info-card {
+  background: #F0F9FA;
+  border: 1px solid #F0F9FA;
+  padding: 14px;
+  border-radius: 12px;
+}
+
+.festival-info-card-title {
+  color: #6c757d;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.festival-info-card-title img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.festival-info-card-body {
+  font-size: 14px;
+  color: #2b3a3a;
+}
+
+.festival-info-card--discount {
+  background: #FEF2F2;
+  border-color: #FFC9C9;
+}
+
+.festival-modal-special-event {
+  background: #fff7df;
+  border: 1px solid #ffecb3;
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 16px;
+}
+
+.festival-special-event-title {
+  font-weight: 700;
+  color: #7a5b00;
+  margin-bottom: 6px;
+}
+
+.festival-special-event-body {
+  color: #5d4c1d;
+}
+
+.festival-modal-meta {
+  font-size: 16px;
+  color: #495057;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.festival-modal-meta p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.festival-modal-meta strong {
+    font-weight: 700;
+    color: #343a40;
+    margin-right: 16px;
+    width: 40px;
+}
+
+.festival-modal-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #495057;
+  margin: 0;
+}
+
+.festival-modal-program-chips {
+  display: grid;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.festival-modal-chip {
+  background: #e8f7f7;
+  color: #195c5c;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.festival-modal-discount {
+    background-color: #fff9db;
+    border: 1px solid #ffe8a3;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #5d4c1d;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.festival-modal-cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.festival-modal-cta {
+  background: #008b94;
+  color: #fff;
+  border: none;
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  max-width: 420px;
+}
+
+.festival-modal-cta:hover {
+  background: #00747a;
+}
+
+/* Responsive adjustments: keep modal comfortable on small screens */
+@media (max-width: 768px) {
+  .festival-modal-content {
+    width: 94%;
+    max-width: 640px; /* keep some margin on smaller devices */
+  }
+}
+
+@media (min-width: 1400px) {
+  .festival-modal-content {
+    max-width: 1100px; /* allow wider on very large screens */
+  }
+}
