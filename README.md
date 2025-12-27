@@ -1,14 +1,31 @@
 # 거북섬커넥트 - 2025 2학기 CE(시흥시 지역사회참여교과) 우수작
 
-📖 내용
+## 📖 개요
 - 2025년 2학기 웹서비스프로그래밍 CE과목 우수작 '우린거북섬 모두가치통통팀'(최성현[팀장/PM/DevOps], 김준권[FE], 송수석[문서작업], 이기용[FE], 채영진[BE])
+<br><br>
 
-🙋‍♂️ 역할
+## 🙋‍♂️ 역할
 - 리딩, PM, CI/CD, 백엔드 수정
+<br><br>
 
-### 🎯 결과 및 성과
+## 🎯 결과 및 성과
 - 2025 지역사회참여교과 우수작 원장상
 - 2025 지역사회참여교과 수강후기 공모전 대상
+
+| ![IMG_5312](https://github.com/user-attachments/assets/0d28f2bb-4ff4-4d71-84ac-96e8be30ecf2) | ![IMG_5311](https://github.com/user-attachments/assets/812c805f-fdb2-4f20-9cd5-f7dacfaebcb3) |
+| :---: | :---: |
+
+<br>
+
+- 지역사회참여교과 성과공유회 자료집 수록 및 시흥시 보고
+
+| ![IMG_5303](https://github.com/user-attachments/assets/a77f262a-5393-495a-acb5-71dcb3ae7785) | ![IMG_5306](https://github.com/user-attachments/assets/892c6647-9b3f-4074-bbdc-9d7b71c4996a) |
+| :---: | :---: |
+| ![IMG_5307](https://github.com/user-attachments/assets/75275a1d-ae09-496e-9685-3f0504258603) | ![IMG_5308](https://github.com/user-attachments/assets/8c58c7fc-1f38-4ea6-b3d4-0624710958ea) |
+
+<br><br>
+
+## 💡 내용
   
 ![웹서프최종_거북섬커넥트_page-0001](https://github.com/user-attachments/assets/0a2b9fc5-f2bf-40b7-9bf7-183713fa999f)
 ![웹서프최종_거북섬커넥트_page-0002](https://github.com/user-attachments/assets/b1dd7262-3fce-4371-bc76-2ff4d3b025e2)
