@@ -5,8 +5,13 @@
   (최성현[팀장/PM/DevOps], 김준권[FE], 송수석[문서작업], 이기용[FE], 채영진[BE])
 <br><br>
 
-## 🙋‍♂️ 역할
-- 리딩, PM, CI/CD, 백엔드 수정
+## 🙋‍♂️ 역할 (팀장)
+- 팀 리더/PM으로서 관리자/사용자 API 경계를 정의하고, 도메인 단위 작업 분해 및 Swagger를 이용한 백엔드-프론트 협업 프로세스를 정립
+- Spring Boot 3 기반 REST API 구조로 백엔드 코드 정비 및 기능 확장
+- JWT 기반 무상태(Stateless) 인증 + RBAC 인가(Admin/Agency/Public)로 보안 경계를 명확히 구현
+- JWT 무상태 인증을 유지하면서도 Refresh Token을 Redis에 저장해 로그아웃/강제 만료/재발급 검증 등 서버 측 통제 기능을 확보한 인증 흐름 구축
+- Docker 멀티스테이지 빌드 및 docker-compose로 App/MySQL/Redis를 묶어 배포 재현성 확보
+- GitHub Actions로 CI/CD 파이프라인 구축 : 메인 브랜치 기준 빌드·도커 이미지 빌드/푸시 자동화 후, AWS Lightsail에 자동 배포
 <br><br>
 
 ## 🎯 결과 및 성과
